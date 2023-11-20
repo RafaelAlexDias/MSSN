@@ -3,6 +3,7 @@ package setup;
 import ac.SketchACElementar;
 import ac.SketchGOL;
 import dla.DLA;
+import physics.ControlGUIApp;
 import physics.ParticleSystemApp;
 import physics.SolarSystemApp;
 import processing.core.PApplet;
@@ -40,7 +41,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new ParticleSystemApp();
+        app = new ControlGUIApp();
         PApplet.main(ProcessingSetup.class);
     }
 }
