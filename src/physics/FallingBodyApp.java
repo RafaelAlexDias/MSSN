@@ -1,6 +1,7 @@
 package physics;
 
 import processing.core.PApplet;
+import processing.core.PVector;
 import setup.IProcessingApp;
 import tools.SubPlot;
 
@@ -32,21 +33,40 @@ public class FallingBodyApp implements IProcessingApp {
 
     @Override
     public void draw(PApplet parent, float dt) {
+        /*
+        PVector f = new PVector(0, mass*g);
+        ball.applyForce(f);
+        if (water.isInside(ball)) {
+            f = water.drag(ball);
+        }
+        else {
+            f = air.drag(ball);
+        }
+        ball.applyForce(f);
 
+        ball.move(speedUp*dt);
+
+        water.display(p, plt);
+        ball.display(p, plt);
+
+        timer += (speedUp * dt);
+        if (ball.pos.y < 0) {
+            p.noLoop();
+            System.out.println(timer);
+        }
+
+         */
     }
 
     @Override
     public void keyPressed(PApplet parent) {
-
     }
 
     @Override
     public void mousePressed(PApplet parent) {
-
     }
 
     @Override
     public void mouseDragged(PApplet parent) {
-
     }
 }
