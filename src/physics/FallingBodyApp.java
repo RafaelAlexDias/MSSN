@@ -54,7 +54,6 @@ public class FallingBodyApp implements IProcessingApp {
             p.noLoop();
             System.out.println(timer);
         }
-
          */
     }
 
