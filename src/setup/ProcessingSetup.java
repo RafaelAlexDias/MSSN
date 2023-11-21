@@ -41,7 +41,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new ControlGUIApp();
+        app = new SolarSystemApp();
         PApplet.main(ProcessingSetup.class);
     }
 }
