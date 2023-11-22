@@ -16,8 +16,8 @@ public class ParticleSystemApp implements IProcessingApp {
     private SubPlot plt;
     private float[] velParams = {PApplet.radians(90), PApplet.radians(20), 1, 3};
     private float[] lifetimeParams = {3, 5};
-    private float[] radiusParams = {0.1f, 0.5f};
-    private float flow = 50;
+    private float[] radiusParams = {0.1f, 0.2f};
+    private float flow = 500;
 
     @Override
     public void setup(PApplet parent) {
@@ -55,12 +55,11 @@ public class ParticleSystemApp implements IProcessingApp {
         System.out.println("u");
         double[] ww = plt.getWorldCoord(parent.mouseX, parent.mouseY);
 
-        int cor = parent.color(parent.random(255), parent.random(255), parent.random(255));
-        float lifespan = parent.random(1, 3);
+        int color = parent.color(parent.random(255), parent.random(255), parent.random(255));
 
-        PSControl psc = new PSControl(velParams);
-        ParticleSystem ps = new ParticleSystem(new PVector((float)ww[0], (float)ww[1]), new PVector() , 1f, 0.2f,
-                cor, lifespan, psc);
+        PSControl psc = new PSControl(velParams, lifetimeParams, radiusParams, flow, color);
+        ParticleSystem ps = new ParticleSystem(new PVector((float)ww[0], (float)ww[1]), new PVector() , 1f,
+                0.2f, psc);
         pss.add(ps);
         System.out.println("deu");
     }

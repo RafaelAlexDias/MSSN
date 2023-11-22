@@ -70,7 +70,7 @@ public class PSControl {
         return v.mult(getRnd(minVelocity, maxVelocity));
     }
 
-    public float getRnd(float min, float max) {
+    public static float getRnd(float min, float max) {
         return min + (float) (Math.random() * (max - min));
     }
 }
