@@ -7,14 +7,21 @@ public abstract class Mover {
     protected PVector acc;
     protected PVector vel;
     protected float mass;
-    protected float radius;
+    private static double G = 6.67e-11;
 
-    protected Mover(PVector pos, PVector vel, float mass, float radius) {
+    protected Mover(PVector pos, PVector vel, float mass) {
         this.pos = pos.copy();
         this.vel = vel;
         this.mass = mass;
-        this.radius = radius;
         acc = new PVector();
+    }
+
+    public PVector attraction(Mover m) {
+        PVector r = PVector.sub(pos, m.pos);
+        float dist = r.mag();
+        float strenght = (float) (G * mass * m.mass / Math.pow(dist, 2));
+
+        return r.normalize().mult(strenght);
     }
 
     public void applyForce(PVector force) {

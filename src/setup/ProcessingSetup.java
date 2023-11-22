@@ -4,6 +4,7 @@ import ac.SketchACElementar;
 import ac.SketchGOL;
 import dla.DLA;
 import physics.ControlGUIApp;
+import physics.FallingBodyApp;
 import physics.ParticleSystemApp;
 import physics.SolarSystemApp;
 import processing.core.PApplet;
@@ -41,7 +42,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new SolarSystemApp();
+        app = new ParticleSystemApp();
         PApplet.main(ProcessingSetup.class);
     }
 }

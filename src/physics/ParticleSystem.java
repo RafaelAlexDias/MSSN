@@ -7,20 +7,18 @@ import tools.SubPlot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParticleSystem extends Mover{
+public class ParticleSystem extends Body{
 
     private List<Particle> particles;
-    private int particleColor;
     private float lifetime;
-    private PVector particleSpeed;
+    private PSControl psc;
 
     protected ParticleSystem(PVector pos, PVector vel, float mass,
-                             float radius, int particleColor, float lifetime,
-                             PVector particleSpeed) {
-        super(pos, vel, mass, radius);
-        this.particleColor = particleColor;
+                             float radius, int color, float lifetime,
+                             PSControl psc) {
+        super(pos, vel, mass, radius, color);
         this.lifetime = lifetime;
-        this.particleSpeed = particleSpeed;
+        this.psc = psc;
         this.particles = new ArrayList<Particle>();
     }
 
@@ -28,7 +26,7 @@ public class ParticleSystem extends Mover{
     public void move(float dt) {
         super.move(dt);
         addParticle();
-        for(int i = particles.size() -1; i>=0; i--) {
+        for(int i = particles.size()-1; i>=0; i--) {
             Particle p = particles.get(i);
             p.move(dt);
             if (p.isDead()) {
@@ -38,12 +36,11 @@ public class ParticleSystem extends Mover{
     }
 
     private void addParticle() {
-        float vx = (float) (particleSpeed.x*(Math.random() -0.5));
-        float vy = (float) (particleSpeed.y*(Math.random() -0.5));
-        Particle particle = new Particle(pos, new PVector(vx, vy), radius, particleColor, lifetime);
+        Particle particle = new Particle(pos, psc.getRndVel(), radius, color, lifetime);
         particles.add(particle);
     }
 
+    @Override
     public void display(PApplet p, SubPlot plt) {
         for (Particle particle : particles) {
             particle.display(p, plt);

@@ -15,7 +15,7 @@ public class FallingBodyApp implements IProcessingApp {
     private final double window[] = {0, dimX, 0, dimY};
     private float viewport[] = {0f, 0f, 1f, 1f};
     private SubPlot plt;
-    // private Body ball;
+    private Body ball;
     private Water water;
     private Air air;
     private float speedUp = 0.5f;
@@ -24,8 +24,8 @@ public class FallingBodyApp implements IProcessingApp {
     @Override
     public void setup(PApplet parent) {
         plt = new SubPlot(window, viewport, parent.width, parent.height);
-        // ball = new Body(new PVector(0, 12), new PVector(8, 6),
-        //            mass, radius, parent.color(255, 255, 0));
+        ball = new Body(new PVector(0, 12), new PVector(8, 6),
+                    mass, radius, parent.color(255, 255, 0));
         water = new Water(4, parent.color(0, 255, 255));
         air = new Air();
         timer = 0.0f;
@@ -33,7 +33,7 @@ public class FallingBodyApp implements IProcessingApp {
 
     @Override
     public void draw(PApplet parent, float dt) {
-        /*
+
         PVector f = new PVector(0, mass*g);
         ball.applyForce(f);
         if (water.isInside(ball)) {
@@ -46,15 +46,15 @@ public class FallingBodyApp implements IProcessingApp {
 
         ball.move(speedUp*dt);
 
-        water.display(p, plt);
-        ball.display(p, plt);
+        water.display(parent, plt);
+        ball.display(parent, plt);
 
         timer += (speedUp * dt);
         if (ball.pos.y < 0) {
-            p.noLoop();
+            parent.noLoop();
             System.out.println(timer);
         }
-         */
+
     }
 
     @Override
