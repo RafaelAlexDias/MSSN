@@ -1,10 +1,11 @@
-# ISEL - CPS 
-## Semestre 2023/24
-###  <center> Projeto 2 </center>
+# ISEL - MSSN - Semestre 2023/24
+##  <center> Projeto 2 </center>
 
-# Exercícios Realisados:
-## B
-## C
+### Exercícios Realisados:
+#### B
+#### C
+
+<br>
 
 Trabalho realizado por:
 * João Ramos, número <b> 50730 </b>
