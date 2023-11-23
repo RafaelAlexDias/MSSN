@@ -7,14 +7,19 @@ import processing.core.PShape;
 import processing.core.PVector;
 import tools.SubPlot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Boid extends Body {
 
     private SubPlot plt;
     private PShape shape;
+    private List<Behavior> behaviors;
 
     protected Boid(PVector pos, PVector acc, float mass, float radius,
                    int color, DNA dna, PApplet p, SubPlot plt) {
         super(pos, acc, mass, radius, color);
+        behaviors = new ArrayList<Behavior>();
         this.plt = plt;
         setShape(p, plt);
     }

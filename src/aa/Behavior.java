@@ -1,6 +1,8 @@
 package aa;
 
-public abstract class Behavior implements IBehavior{
+import processing.core.PVector;
+
+public abstract class Behavior implements IBehavior {
     private float weight;
 
     public Behavior(float weight) {
@@ -9,7 +11,6 @@ public abstract class Behavior implements IBehavior{
 
     @Override
     public PVector getDesiredVelocity(Boid me) {
-        
         return null;
     }
 
