@@ -2,8 +2,8 @@
 ##  <center> Projeto 2 </center>
 
 ### Exercícios Realisados:
-#### B
-#### C
+#### B. Queda livre com atrito (Silico)
+#### C. Sistema Solar & Sistemas de Partículas (com iteradores)
 
 <br>
 
