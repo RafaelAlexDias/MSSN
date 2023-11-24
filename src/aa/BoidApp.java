@@ -1,9 +1,13 @@
 package aa;
 
+import physics.Body;
 import processing.core.PApplet;
 import processing.core.PVector;
 import setup.IProcessingApp;
 import tools.SubPlot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoidApp implements IProcessingApp {
 
@@ -11,26 +15,26 @@ public class BoidApp implements IProcessingApp {
     private double[] window = {-10, 10, -10, 10};
     private float[] viewport = {0, 0, 1, 1};
     private SubPlot plt;
-    private DNA dna;
-    private float[] maxSpeed = {4, 4};
-    private PVector target;
+    private Body target;
+    private List<Body> allTrackingBodies;
 
     @Override
     public void setup(PApplet parent) {
         plt = new SubPlot(window, viewport, parent.width, parent.height);
-        dna = new DNA(maxSpeed);
-        b = new Boid(new PVector(), new PVector(), 1, 0.5f, parent.color(0),
-                dna, parent, plt);
-        target = new PVector();
+        b = new Boid(new PVector(), new PVector(), 1, 0.5f, parent.color(0), parent, plt);
+        b.addBehavior(new Seek(1f));
+        target = new Body(new PVector(), new PVector(), 1f, 0.2f, parent.color(255, 0, 0));
+        allTrackingBodies = new ArrayList<Body>();
+        allTrackingBodies.add(target);
+        Eye eye = new Eye(b, allTrackingBodies);
+        b.setEye(eye);
     }
 
     @Override
     public void draw(PApplet parent, float dt) {
         parent.background(255);
 
-        PVector f = b.seek(target);
-        b.applyForce(f);
-        b.move(dt);
+        b.applyBehaviors(dt);
 
         b.display(parent, plt);
     }
@@ -43,8 +47,7 @@ public class BoidApp implements IProcessingApp {
     @Override
     public void mousePressed(PApplet parent) {
         double[] ww = plt.getWorldCoord(parent.mouseX, parent.mouseY);
-        target.x = (float) ww[0];
-        target.y = (float) ww[1];
+        target.setPos(new PVector((float) ww[0], (float) ww[1]));
     }
 
     @Override
