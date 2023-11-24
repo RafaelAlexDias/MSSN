@@ -96,6 +96,17 @@ public class Boid extends Body {
         move(dt, vd);
     }
 
+    public void increaseSpeed() {
+        dna.maxSpeed += 1;
+    }
+
+    public void decreaseSpeed() {
+        dna.maxSpeed -= 1;
+        if (dna.maxSpeed < 0) {
+            dna.maxSpeed = 0;
+        }
+    }
+
     private void move(float dt, PVector vd) {
         vd.normalize().mult(dna.maxSpeed);
         PVector fs = PVector.sub(vd, vel);

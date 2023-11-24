@@ -5,6 +5,8 @@ import processing.core.PVector;
 import setup.IProcessingApp;
 import tools.SubPlot;
 
+import javax.crypto.interfaces.PBEKey;
+
 public class SolarSystemApp implements IProcessingApp {
 
     private float lastTime;
@@ -41,6 +43,8 @@ public class SolarSystemApp implements IProcessingApp {
 
     private SubPlot plt;
     private Body sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
+    private ParticleSystem ps;
+    private PSControl psc;
 
     // Cada segundo corresponde a um mês na simulação
     private float speedUp = 60 * 60 * 24 * 30;
@@ -90,6 +94,10 @@ public class SolarSystemApp implements IProcessingApp {
                 planetMass[6], distEarthSun*0.5f, parent.color(80, 175, 220));
         neptune = new Body(new PVector(0, distancesToSun[7]), new PVector(planetSpeed[7], 0),
                 planetMass[7], distEarthSun*0.6f, parent.color(64, 101, 251));
+
+        // Sistema de partículas
+        //ps = new ParticleSystem(new PVector(), new PVector(), 1f, 0.2f,
+        //        psc);
     }
 
     @Override
@@ -105,6 +113,10 @@ public class SolarSystemApp implements IProcessingApp {
 
         // Display Sol
         sun.display(parent, plt);
+        /*
+        ps.move(dt);
+        ps.display(parent, plt);
+         */
 
         // Display Mercúrio
         PVector fMercury = sun.attraction(mercury);

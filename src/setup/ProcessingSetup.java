@@ -1,5 +1,6 @@
 package setup;
 
+import aa.BoidAceleradorTravaoApp;
 import aa.BoidApp;
 import aa.FlockTestApp;
 import aa.ReynoldsTestApp;
@@ -45,7 +46,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new ReynoldsTestApp();
+        app = new BoidAceleradorTravaoApp();
         PApplet.main(ProcessingSetup.class);
     }
 }
