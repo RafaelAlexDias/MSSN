@@ -4,6 +4,8 @@
 ### Exercícios Realisados:
 #### B. Queda livre com atrito (Silico)
 #### C. Sistema Solar & Sistemas de Partículas (com iteradores)
+#### D. Agentes Autónomos - Comportamentos individuais
+* 1. Boid com acerador e travão (done)
 
 <br>
 
