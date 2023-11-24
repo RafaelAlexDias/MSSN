@@ -2,7 +2,9 @@ package aa;
 
 import aa.Boid;
 import physics.Body;
+import processing.core.PApplet;
 import processing.core.PVector;
+import tools.SubPlot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,5 +56,27 @@ public class Eye {
 
     private boolean nearSight(PVector t) {
         return inSight(t, me.dna.visionSafeDistance, (float)Math.PI);
+    }
+
+    public void display(PApplet p, SubPlot plt) {
+        p.pushStyle();
+        p.pushMatrix();
+        float[] pp = plt.getPixelCoord(me.getPos().x, me.getPos().y);
+        p.translate(pp[0], pp[1]);
+        p.rotate(-me.getVel().heading());
+        p.noFill();
+        p.stroke(255, 0, 0);
+        p.strokeWeight(3);
+        float[] dd = plt.getDimInPixel(me.dna.visionDistance, me.dna.visionSafeDistance);
+        p.rotate(me.dna.visionAngle);
+        p.line(0, 0, dd[0], 0);
+        p.rotate(-2*me.dna.visionAngle);
+        p.line(0, 0, dd[0], 0);
+        p.rotate(me.dna.visionAngle);
+        p.arc(0, 0, 2*dd[0], 2*dd[0], -me.dna.visionAngle, me.dna.visionAngle);
+        p.stroke(255, 0, 255);
+        p.circle(0, 0, 2*dd[1]);
+        p.popMatrix();
+        p.popStyle();
     }
 }

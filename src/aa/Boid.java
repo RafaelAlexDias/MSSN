@@ -35,6 +35,10 @@ public class Boid extends Body {
         this.eye = eye;
     }
 
+    public Eye getEye() {
+        return eye;
+    }
+
     public void setShape(PApplet p, SubPlot plt, float radius, int color) {
         this.radius = radius;
         this.color = color;
@@ -74,14 +78,14 @@ public class Boid extends Body {
     }
 
     public void applyBehavior(int i, float dt) {
-        eye.look();
+        if (eye!= null) eye.look();
         Behavior behavior = behaviors.get(i);
         PVector vd = behavior.getDesiredVelocity(this);
         move(dt, vd);
     }
 
     public void applyBehaviors(float dt) {
-        eye.look();
+        if (eye!= null) eye.look();
 
         PVector vd = new PVector();
         for (Behavior behavior : behaviors) {
