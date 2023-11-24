@@ -17,12 +17,16 @@ public class BoidApp implements IProcessingApp {
     private SubPlot plt;
     private Body target;
     private List<Body> allTrackingBodies;
+    private int index = 2;
 
     @Override
     public void setup(PApplet parent) {
         plt = new SubPlot(window, viewport, parent.width, parent.height);
         b = new Boid(new PVector(), new PVector(), 1, 0.5f, parent.color(0), parent, plt);
         b.addBehavior(new Seek(1f));
+        b.addBehavior(new Flee(1f));
+        b.addBehavior(new Wander(1f));
+
         target = new Body(new PVector(), new PVector(), 1f, 0.2f, parent.color(255, 0, 0));
         allTrackingBodies = new ArrayList<Body>();
         allTrackingBodies.add(target);
@@ -34,7 +38,7 @@ public class BoidApp implements IProcessingApp {
     public void draw(PApplet parent, float dt) {
         parent.background(255);
 
-        b.applyBehaviors(dt);
+        b.applyBehavior(index, dt);
 
         b.display(parent, plt);
     }

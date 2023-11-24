@@ -17,6 +17,8 @@ public class Boid extends Body {
     protected DNA dna;
     protected Eye eye;
     private List<Behavior> behaviors;
+    protected float phiWander;
+    private double[] window;
 
     protected Boid(PVector pos, PVector acc, float mass, float radius,
                    int color, PApplet p, SubPlot plt) {
@@ -24,6 +26,7 @@ public class Boid extends Body {
         dna = new DNA();
         behaviors = new ArrayList<Behavior>();
         this.plt = plt;
+        window = plt.getWindow();
         setShape(p, plt);
     }
 
@@ -52,6 +55,13 @@ public class Boid extends Body {
         }
     }
 
+    public void applyBehavior(int i, float dt) {
+        eye.look();
+        Behavior behavior = behaviors.get(i);
+        PVector vd = behavior.getDesiredVelocity(this);
+        move(dt, vd);
+    }
+
     public void applyBehaviors(float dt) {
         eye.look();
 
@@ -69,6 +79,18 @@ public class Boid extends Body {
         PVector fs = PVector.sub(vd, vel);
         applyForce(fs.limit(dna.maxForce));
         super.move(dt);
+        if (pos.x < window[0]) {
+            pos.x += window[1] - window[0];
+        }
+        if (pos.y < window[2]) {
+            pos.y += window[3] - window[2];
+        }
+        if (pos.x >= window[1]) {
+            pos.x -= window[1] - window[0];
+        }
+        if (pos.y >= window[3]) {
+            pos.y -= window[3] - window[2];
+        }
     }
 
     @Override
