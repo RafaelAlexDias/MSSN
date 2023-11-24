@@ -1,6 +1,7 @@
 package setup;
 
 import aa.BoidApp;
+import aa.FlockTestApp;
 import ac.SketchACElementar;
 import ac.SketchGOL;
 import dla.DLA;
@@ -43,7 +44,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new BoidApp();
+        app = new FlockTestApp();
         PApplet.main(ProcessingSetup.class);
     }
 }

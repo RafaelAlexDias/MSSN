@@ -19,10 +19,11 @@ public class Boid extends Body {
     private List<Behavior> behaviors;
     protected float phiWander;
     private double[] window;
+    private float sumWeights;
 
-    protected Boid(PVector pos, PVector acc, float mass, float radius,
+    protected Boid(PVector pos, float mass, float radius,
                    int color, PApplet p, SubPlot plt) {
-        super(pos, acc, mass, radius, color);
+        super(pos, new PVector(), mass, radius, color);
         dna = new DNA();
         behaviors = new ArrayList<Behavior>();
         this.plt = plt;
@@ -34,10 +35,18 @@ public class Boid extends Body {
         this.eye = eye;
     }
 
+    public void setShape(PApplet p, SubPlot plt, float radius, int color) {
+        this.radius = radius;
+        this.color = color;
+        setShape(p, plt);
+    }
+
     public void setShape(PApplet p, SubPlot plt) {
         float[] rr = plt.getDimInPixel(radius, radius);
         shape = p.createShape();
         shape.beginShape();
+        shape.noStroke();
+        shape.fill(color);
         shape.vertex(-rr[0], rr[0]/2);
         shape.vertex(rr[0], 0);
         shape.vertex(-rr[0], -rr[0]/2);
@@ -45,14 +54,23 @@ public class Boid extends Body {
         shape.endShape(PConstants.CLOSE);
     }
 
+    private void updateSumWeights() {
+        sumWeights = 0;
+        for (Behavior behavior : behaviors) {
+            sumWeights += behavior.getWeight();
+        }
+    }
+
     public void addBehavior(Behavior behavior) {
         behaviors.add(behavior);
+        updateSumWeights();
     }
 
     public void removeBehavior(Behavior behavior) {
         if (behaviors.contains(behavior)) {
             behaviors.remove(behavior);
         }
+        updateSumWeights();
     }
 
     public void applyBehavior(int i, float dt) {
@@ -68,7 +86,7 @@ public class Boid extends Body {
         PVector vd = new PVector();
         for (Behavior behavior : behaviors) {
             PVector vdd = behavior.getDesiredVelocity(this);
-            vdd.mult(behavior.getWeight());
+            vdd.mult(behavior.getWeight()/sumWeights);
             vd.add(vdd);
         }
         move(dt, vd);
@@ -95,9 +113,11 @@ public class Boid extends Body {
 
     @Override
     public void display(PApplet p, SubPlot plt) {
+        p.pushMatrix();
         float[] pp = plt.getPixelCoord(pos.x, pos.y);
         p.translate(pp[0], pp[1]);
         p.rotate(-vel.heading());
         p.shape(shape);
+        p.popMatrix();
     }
 }

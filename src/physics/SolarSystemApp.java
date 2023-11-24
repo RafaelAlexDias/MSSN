@@ -159,18 +159,15 @@ public class SolarSystemApp implements IProcessingApp {
     public void keyPressed(PApplet parent) {
         if (parent.key == '1') {
             window = new double[]{-1.2 * smallWindow, 1.2 * smallWindow, -1.2 * smallWindow, 1.2 * smallWindow};
-            setup(parent);
-            draw(parent, this.dt);
+            plt = new SubPlot(window, viewport, parent.width, parent.height);
         }
         if (parent.key == '2') {
             window = new double[]{-1.2 * mediumWindow, 1.2 * mediumWindow, -1.2 * mediumWindow, 1.2 * mediumWindow};
-            setup(parent);
-            draw(parent, this.dt);
+            plt = new SubPlot(window, viewport, parent.width, parent.height);
         }
         if (parent.key == '3') {
             window = new double[]{-1.2 * bigWindow, 1.2 * bigWindow, -1.2 * bigWindow, 1.2 * bigWindow};
-            setup(parent);
-            draw(parent, this.dt);
+            plt = new SubPlot(window, viewport, parent.width, parent.height);
         }
     }
 
