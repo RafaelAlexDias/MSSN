@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoidAceleradorTravaoApp implements IProcessingApp {
-
     private Boid b;
     private double[] window = {-10, 10, -10, 10};
     private float[] viewport = {0, 0, 1, 1};
