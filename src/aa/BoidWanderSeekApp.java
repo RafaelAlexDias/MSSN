@@ -25,7 +25,7 @@ public class BoidWanderSeekApp implements IProcessingApp {
     public void setup(PApplet parent) {
         // Setup SubPlot
         plt = new SubPlot(window, viewport, parent.width, parent.height);
-        // Setup BBoid
+        // Setup Boid
         b = new Boid(new PVector(), 1, 0.5f, parent.color(0), parent, plt);
         b.addBehavior(new Seek(1f));
         b.addBehavior(new Wander(1f));
@@ -64,7 +64,7 @@ public class BoidWanderSeekApp implements IProcessingApp {
 
     @Override
     public void mousePressed(PApplet parent) {
-        
+
     }
 
     @Override
