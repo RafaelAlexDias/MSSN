@@ -10,6 +10,8 @@ import tools.SubPlot;
 import java.util.ArrayList;
 import java.util.List;
 
+import static aa.DNA.random;
+
 public class Boid extends Body {
 
     private SubPlot plt;
@@ -92,6 +94,29 @@ public class Boid extends Body {
             PVector vdd = behavior.getDesiredVelocity(this);
             vdd.mult(behavior.getWeight()/sumWeights);
             vd.add(vdd);
+        }
+        move(dt, vd);
+    }
+
+    public float distanceToTarget(Body target) {
+        return PVector.dist(this.pos, target.getPos());
+    }
+
+    public void applyBehaviorsWanderSeek(float dt, Body target, float maxBoidTargetDistance) {
+        if (eye!= null) eye.look();
+
+        PVector vd = new PVector();
+        for (Behavior behavior : behaviors) {
+            PVector vdd = behavior.getDesiredVelocity(this);
+            vdd.mult(behavior.getWeight()/sumWeights);
+            vd.add(vdd);
+        }
+
+        float distanceToTarget = distanceToTarget(target);
+
+        if (distanceToTarget < maxBoidTargetDistance) {
+            target.setPos(new PVector(random((float)window[0], (float)window[1]),
+                    random((float)window[2], (float)window[3])));
         }
         move(dt, vd);
     }

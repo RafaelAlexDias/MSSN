@@ -9,7 +9,7 @@ import tools.SubPlot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoidAceleradorTravaoApp implements IProcessingApp {
+public class BoidWanderSeekApp implements IProcessingApp {
 
     private Boid b;
     private double[] window = {-10, 10, -10, 10};
@@ -22,9 +22,10 @@ public class BoidAceleradorTravaoApp implements IProcessingApp {
     public void setup(PApplet parent) {
         // Setup SubPlot
         plt = new SubPlot(window, viewport, parent.width, parent.height);
-        // Setup Boid
+        // Setup BBoid
         b = new Boid(new PVector(), 1, 0.5f, parent.color(0), parent, plt);
         b.addBehavior(new Seek(1f));
+        b.addBehavior(new Wander(1f));
         // Setup Target
         target = new Body(new PVector(), new PVector(), 1f, 0.2f, parent.color(255, 0, 0));
         allTrackingBodies = new ArrayList<Body>();
@@ -38,8 +39,8 @@ public class BoidAceleradorTravaoApp implements IProcessingApp {
     public void draw(PApplet parent, float dt) {
         // Limpeza da window
         parent.background(255);
-        // Aplicar os comportamentos
-        b.applyBehaviors(dt);
+        // Função em que aplica os comportamentos "Wander" e "Seek" e envia a maxBoidTargetDistance
+        b.applyBehaviorsWanderSeek(dt, target, 2.0f);
         // Display do Boid e do Target
         b.display(parent, plt);
         target.display(parent, plt);
@@ -47,14 +48,7 @@ public class BoidAceleradorTravaoApp implements IProcessingApp {
 
     @Override
     public void keyPressed(PApplet parent) {
-        // Caso a tecla '+' seja precionada, a velocidade do Boid é aumentada
-        if (parent.key == '+') {
-            b.increaseSpeed();
-        }
-        // Caso a tecla '-' seja precionada, a velocidade do Boid é diminuida
-        else if (parent.key == '-') {
-            b.decreaseSpeed();
-        }
+
     }
 
     @Override

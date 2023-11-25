@@ -1,9 +1,6 @@
 package setup;
 
-import aa.BoidAceleradorTravaoApp;
-import aa.BoidApp;
-import aa.FlockTestApp;
-import aa.ReynoldsTestApp;
+import aa.*;
 import ac.SketchACElementar;
 import ac.SketchGOL;
 import dla.DLA;
