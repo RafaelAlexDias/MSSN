@@ -43,7 +43,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new BoidAceleradorTravaoApp();
+        app = new BoidWanderSeekApp();
         PApplet.main(ProcessingSetup.class);
     }
 }

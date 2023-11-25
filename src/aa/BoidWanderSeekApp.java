@@ -9,6 +9,8 @@ import tools.SubPlot;
 import java.util.ArrayList;
 import java.util.List;
 
+import static aa.DNA.random;
+
 public class BoidWanderSeekApp implements IProcessingApp {
 
     private Boid b;
@@ -17,6 +19,7 @@ public class BoidWanderSeekApp implements IProcessingApp {
     private SubPlot plt;
     private Body target;
     private List<Body> allTrackingBodies;
+    private float minBoidTargetDistance = 2.0f;
 
     @Override
     public void setup(PApplet parent) {
@@ -39,8 +42,16 @@ public class BoidWanderSeekApp implements IProcessingApp {
     public void draw(PApplet parent, float dt) {
         // Limpeza da window
         parent.background(255);
-        // Função em que aplica os comportamentos "Wander" e "Seek" e envia a maxBoidTargetDistance
-        b.applyBehaviorsWanderSeek(dt, target, 2.0f);
+        // Função em que aplica os comportamentos "Wander" e "Seek" e envia a minBoidTargetDistance
+        b.applyBehaviors(dt);
+        // Determina a distância entre o "Boid" e o "Target"
+        float distanceToTarget = b.distanceToTarget(target);
+        // Se a distância entre o "Boid" e o "Target" for menor que a minBoidTargetDistance,
+        // a posição do "Target" será alterada
+        if (distanceToTarget < minBoidTargetDistance) {
+            target.setPos(new PVector(random((float)window[0], (float)window[1]),
+                    random((float)window[2], (float)window[3])));
+        }
         // Display do Boid e do Target
         b.display(parent, plt);
         target.display(parent, plt);
@@ -53,9 +64,7 @@ public class BoidWanderSeekApp implements IProcessingApp {
 
     @Override
     public void mousePressed(PApplet parent) {
-        // Ao clicarmos com o mouse na window, a posição do target vai ser alterada
-        double[] ww = plt.getWorldCoord(parent.mouseX, parent.mouseY);
-        target.setPos(new PVector((float) ww[0], (float) ww[1]));
+        
     }
 
     @Override

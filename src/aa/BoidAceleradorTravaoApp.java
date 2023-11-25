@@ -46,11 +46,11 @@ public class BoidAceleradorTravaoApp implements IProcessingApp {
 
     @Override
     public void keyPressed(PApplet parent) {
-        // Caso a tecla '+' seja precionada, a velocidade do Boid é aumentada
+        // Caso a tecla '+' seja pressionada, a velocidade do Boid é aumentada
         if (parent.key == '+') {
             b.increaseSpeed();
         }
-        // Caso a tecla '-' seja precionada, a velocidade do Boid é diminuida
+        // Caso a tecla '-' seja pressionada, a velocidade do Boid é diminuída
         else if (parent.key == '-') {
             b.decreaseSpeed();
         }
