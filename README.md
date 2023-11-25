@@ -13,4 +13,4 @@ Trabalho realizado por:
 * João Ramos, número <b> 50730 </b>
 * Rafael Dias, número <b> 50773 </b>
 
-<b> Turma L31 - Paulo Vieira </b>
+<b> Turma 31 - Paulo Vieira </b>
