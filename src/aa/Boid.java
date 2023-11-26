@@ -41,6 +41,10 @@ public class Boid extends Body {
         return eye;
     }
 
+    public float getRadius() {
+        return radius;
+    }
+
     public void setShape(PApplet p, SubPlot plt, float radius, int color) {
         this.radius = radius;
         this.color = color;

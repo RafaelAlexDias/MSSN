@@ -57,7 +57,7 @@ public class ReynoldsTestApp implements IProcessingApp {
 
     @Override
     public void draw(PApplet parent, float dt) {
-        //parent.background(255);
+        parent.background(255);
         float[] bb = plt1.getBoundingBox();
         parent.fill(255, 64);
         parent.rect(bb[0], bb[1], bb[2], bb[3]);

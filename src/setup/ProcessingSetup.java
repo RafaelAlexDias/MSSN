@@ -4,10 +4,7 @@ import aa.*;
 import ac.SketchACElementar;
 import ac.SketchGOL;
 import dla.DLA;
-import physics.ControlGUIApp;
-import physics.FallingBodyApp;
-import physics.ParticleSystemApp;
-import physics.SolarSystemApp;
+import physics.*;
 import processing.core.PApplet;
 
 public class ProcessingSetup extends PApplet{
@@ -43,7 +40,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new BoidWanderSeekApp();
+        app = new FlockPredatorApp();
         PApplet.main(ProcessingSetup.class);
     }
 }

@@ -49,7 +49,13 @@ public class ParticleSystem extends Body{
     }
 
     private void addOneParticle() {
-        Particle particle = new Particle(pos, psc.getRndVel(), psc.getRndRadius(), psc.getColor(), psc.getRndLifetime());
+        Particle particle = new Particle(
+                new PVector(),
+                PVector.random2D().mult(5),  // Random velocity
+                psc.getRndRadius(),
+                psc.getColor(),
+                psc.getRndLifetime()
+        );
         particles.add(particle);
     }
 
