@@ -57,18 +57,15 @@ public class BoidWanderSeekApp implements IProcessingApp {
         target.display(parent, plt);
     }
 
+    // Método para fazer algo quando uma determinada tecla é pressionada
     @Override
-    public void keyPressed(PApplet parent) {
+    public void keyPressed(PApplet parent) {}
 
-    }
-
+    // Método para fazer algo quando o rato é pressionado
     @Override
-    public void mousePressed(PApplet parent) {
+    public void mousePressed(PApplet parent) {}
 
-    }
-
+    // Método para fazer algo quando o rato é arrastado
     @Override
-    public void mouseDragged(PApplet parent) {
-
-    }
+    public void mouseDragged(PApplet parent) {}
 }

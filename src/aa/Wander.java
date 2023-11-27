@@ -3,10 +3,12 @@ package aa;
 import processing.core.PVector;
 
 public class Wander extends Behavior {
+    // Construtor do comportamento "Wander"
     public Wander(float weight) {
         super(weight);
     }
 
+    // Método "getDesiredVelocity" dedicado para este comportamento
     @Override
     public PVector getDesiredVelocity(Boid me) {
         PVector center = me.getPos().copy();

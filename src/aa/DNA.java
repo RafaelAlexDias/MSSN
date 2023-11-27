@@ -33,6 +33,4 @@ public class DNA {
     public static float random(float min, float max) {
         return (float)(min +(max - min) * Math.random());
     }
-
-
 }

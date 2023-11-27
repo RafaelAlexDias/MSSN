@@ -4,10 +4,12 @@ import physics.Body;
 import processing.core.PVector;
 
 public class Evade extends Behavior {
+    // Construtor do comportamento "Evade"
     public Evade(float weight) {
         super(weight);
     }
 
+    // Método "getDesiredVelocity" dedicado para este comportamento
     @Override
     public PVector getDesiredVelocity(Boid me) {
         Body bodyTarget = me.eye.target;

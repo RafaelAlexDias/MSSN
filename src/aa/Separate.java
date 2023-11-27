@@ -4,10 +4,12 @@ import physics.Body;
 import processing.core.PVector;
 
 public class Separate extends Behavior {
+    // Construtor do comportamento "Separate"
     public Separate(float weight) {
         super(weight);
     }
 
+    // Método "getDesiredVelocity" dedicado para este comportamento
     @Override
     public PVector getDesiredVelocity(Boid me) {
         PVector vd = new PVector();

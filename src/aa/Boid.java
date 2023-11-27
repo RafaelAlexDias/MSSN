@@ -10,8 +10,6 @@ import tools.SubPlot;
 import java.util.ArrayList;
 import java.util.List;
 
-import static aa.DNA.random;
-
 public class Boid extends Body {
 
     private SubPlot plt;
@@ -23,6 +21,7 @@ public class Boid extends Body {
     private double[] window;
     private float sumWeights;
 
+    // Construtor de um "Boid"
     protected Boid(PVector pos, float mass, float radius,
                    int color, PApplet p, SubPlot plt) {
         super(pos, new PVector(), mass, radius, color);
@@ -33,24 +32,28 @@ public class Boid extends Body {
         setShape(p, plt);
     }
 
+    // Método setter para um Eye
     public void setEye(Eye eye) {
         this.eye = eye;
     }
 
+    // Método getter para um Eye
     public Eye getEye() {
         return eye;
     }
 
+    // Método getter para um radius
     public float getRadius() {
         return radius;
     }
 
-    public void setShape(PApplet p, SubPlot plt, float radius, int color) {
-        this.radius = radius;
+    // Método para configurar uma determinada forma de um "Boid" com uma cor
+    public void setShape(PApplet p, SubPlot plt, int color) {
         this.color = color;
         setShape(p, plt);
     }
 
+    // Método para configurar a forma de um "Boid"
     public void setShape(PApplet p, SubPlot plt) {
         float[] rr = plt.getDimInPixel(radius, radius);
         shape = p.createShape();
@@ -64,6 +67,7 @@ public class Boid extends Body {
         shape.endShape(PConstants.CLOSE);
     }
 
+    // Método para atualizar a soma do peso dos comportamentos
     private void updateSumWeights() {
         sumWeights = 0;
         for (Behavior behavior : behaviors) {
@@ -71,11 +75,13 @@ public class Boid extends Body {
         }
     }
 
+    // Método para adicionar um comportamento à lista
     public void addBehavior(Behavior behavior) {
         behaviors.add(behavior);
         updateSumWeights();
     }
 
+    // Método para remover um comportamento à lista
     public void removeBehavior(Behavior behavior) {
         if (behaviors.contains(behavior)) {
             behaviors.remove(behavior);
@@ -83,6 +89,7 @@ public class Boid extends Body {
         updateSumWeights();
     }
 
+    // Método para aplicar um certo comportamento
     public void applyBehavior(int i, float dt) {
         if (eye!= null) eye.look();
         Behavior behavior = behaviors.get(i);
@@ -90,6 +97,7 @@ public class Boid extends Body {
         move(dt, vd);
     }
 
+    // Método para aplicar todos os comportamentos da lista
     public void applyBehaviors(float dt) {
         if (eye!= null) eye.look();
 
@@ -102,14 +110,17 @@ public class Boid extends Body {
         move(dt, vd);
     }
 
+    // Método para determinar a distância de um "Boid" a um certo target
     public float distanceToTarget(Body target) {
         return PVector.dist(this.pos, target.getPos());
     }
 
+    // Método para aumentar a velocidade de um "Boid"
     public void increaseSpeed() {
         dna.maxSpeed += 1;
     }
 
+    // Método para diminuir a velocidade de um "Boid"
     public void decreaseSpeed() {
         dna.maxSpeed -= 1;
         if (dna.maxSpeed < 0) {
@@ -117,6 +128,7 @@ public class Boid extends Body {
         }
     }
 
+    // Método "move" de um "Boid"
     private void move(float dt, PVector vd) {
         vd.normalize().mult(dna.maxSpeed);
         PVector fs = PVector.sub(vd, vel);
@@ -136,6 +148,7 @@ public class Boid extends Body {
         }
     }
 
+    // Método "display" de um "Boid"
     @Override
     public void display(PApplet p, SubPlot plt) {
         p.pushMatrix();

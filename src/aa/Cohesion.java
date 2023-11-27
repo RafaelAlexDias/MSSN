@@ -4,10 +4,12 @@ import physics.Body;
 import processing.core.PVector;
 
 public class Cohesion extends Behavior {
+    // Construtor do comportamento "Cohesion"
     public Cohesion(float weight) {
         super(weight);
     }
 
+    // Método "getDesiredVelocity" dedicado para este comportamento
     @Override
     public PVector getDesiredVelocity(Boid me) {
         PVector target = me.getPos().copy();
