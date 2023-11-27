@@ -5,7 +5,6 @@ import processing.core.PVector;
 import setup.IProcessingApp;
 import tools.SubPlot;
 
-import javax.crypto.interfaces.PBEKey;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +32,7 @@ public class SolarSystemApp implements IProcessingApp {
     // Dados para o Sol
     private float sunMass = 1.989e30f;
 
-    private float radiusSunSize = 6.9634e10f;
+    private float radiusSunSize = 8.5634e9f;
 
     private float distEarthSun = 1.496e11f;
 
@@ -45,7 +44,6 @@ public class SolarSystemApp implements IProcessingApp {
     private float bigWindow = 4.5043e12f;
     private float[] viewport = {0, 0, 1, 1};
     private double[] window = {-1.2 * bigWindow, 1.2 * bigWindow, -1.2 * bigWindow, 1.2 * bigWindow};
-
     private SubPlot plt;
     private Body sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune;
     private PSControl psc;
@@ -54,11 +52,11 @@ public class SolarSystemApp implements IProcessingApp {
     // Cada segundo corresponde a um mês na simulação
     private float speedUp = 60 * 60 * 24 * 30;
 
-    //
-    private float[] velParams = {PApplet.radians(90), PApplet.radians(20), 1, 3};
-    private float[] lifetimeParams = {3, 5};
-    private float[] radiusParams = {1e11f, 1e11f};
-    private float flow = 500;
+    // Valores para ParticleSystem
+    private float[] velParams = {PApplet.radians(90), PApplet.radians(360), 1, 3};
+    private float[] lifetimeParams = {1e5f, 1e6f};
+    private float[] radiusParams = {1e8f, 1e9f};
+    private float flow = 5;
 
     @Override
     public void setup(PApplet parent) {
@@ -66,7 +64,6 @@ public class SolarSystemApp implements IProcessingApp {
         psc = new PSControl(velParams, lifetimeParams, radiusParams, flow, parent.color(255, 128, 0));
 
         lastTime = parent.millis();
-
 
         // Setup dos Corpos Celestiais
         sun = new Body(new PVector(), new PVector(), sunMass, radiusSunSize, parent.color(255, 128, 0));
@@ -87,36 +84,8 @@ public class SolarSystemApp implements IProcessingApp {
         neptune = new Body(new PVector(0, distancesToSun[7]), new PVector(planetSpeed[7], 0),
                 planetMass[7], planetSize[7], parent.color(64, 101, 251));
 
-
-        /*
-        // Setup dos Corpos Celestiais
-        sun = new Body(new PVector(), new PVector(), sunMass, distEarthSun/10, parent.color(255, 128, 0));
-        mercury = new Body(new PVector(0, distancesToSun[0]), new PVector(planetSpeed[0], 0),
-                planetMass[0], distEarthSun/50, parent.color(119, 115, 114));
-        venus = new Body(new PVector(0, distancesToSun[1]), new PVector(planetSpeed[1], 0),
-                planetMass[1], distEarthSun/30, parent.color(194, 100, 0));
-        earth = new Body(new PVector(0, distancesToSun[2]), new PVector(planetSpeed[2], 0),
-                planetMass[2], distEarthSun/20, parent.color(0, 180, 120));
-        mars = new Body(new PVector(0, distancesToSun[3]), new PVector(planetSpeed[3], 0),
-                planetMass[3], distEarthSun/18, parent.color(253, 134, 94));
-        jupiter = new Body(new PVector(0, distancesToSun[4]), new PVector(planetSpeed[4], 0),
-                planetMass[4], distEarthSun*1.1f, parent.color(163, 117, 93));
-        saturn = new Body(new PVector(0, distancesToSun[5]), new PVector(planetSpeed[5], 0),
-                planetMass[5], distEarthSun*0.9f, parent.color(219, 188, 121));
-        uranus = new Body(new PVector(0, distancesToSun[6]), new PVector(planetSpeed[6], 0),
-                planetMass[6], distEarthSun*0.5f, parent.color(80, 175, 220));
-        neptune = new Body(new PVector(0, distancesToSun[7]), new PVector(planetSpeed[7], 0),
-                planetMass[7], distEarthSun*0.6f, parent.color(64, 101, 251));
-
-         */
-
         // Sistema de partículas
-
         pss = new ArrayList<ParticleSystem>();
-        ParticleSystem ps = new ParticleSystem(new PVector(parent.width, 0), new PVector(-1, 1),
-                1f, 1e11f, psc);
-        pss.add(ps);
-
     }
 
     @Override
@@ -133,14 +102,21 @@ public class SolarSystemApp implements IProcessingApp {
         // Display Sol
         sun.display(parent, plt);
 
-        for (ParticleSystem ps : pss) {
+        /*
+        PSControl psc = new PSControl(velParams, lifetimeParams, radiusParams, flow, parent.color(255, 128, 0));
+        ParticleSystem ps = new ParticleSystem(new PVector(), new PVector() , 1f,0.2f, psc);
+        pss.add(ps);
+
+        // Aplica uma força constante a todos os sistemas de partículas
+        for (ParticleSystem parSys : pss) {
             ps.applyForce(new PVector(0, 0));
         }
-
-        for (ParticleSystem ps : pss) {
+        // Move e faz "display" a todos os sistemas de partículas
+        for (ParticleSystem parSys : pss) {
             ps.move(dt);
             ps.display(parent, plt);
         }
+         */
 
         // Display Mercúrio
         PVector fMercury = sun.attraction(mercury);
@@ -203,7 +179,7 @@ public class SolarSystemApp implements IProcessingApp {
             plt = new SubPlot(window, viewport, parent.width, parent.height);
         }
         if (parent.key == '3') {
-            window = new double[]{-1.2 * bigWindow, 1.2 * bigWindow, -1.2 * bigWindow, 1.2 * bigWindow};
+            window = new double[]{-1.1 * bigWindow, 1.1 * bigWindow, -1.1 * bigWindow, 1.1 * bigWindow};
             plt = new SubPlot(window, viewport, parent.width, parent.height);
         }
     }

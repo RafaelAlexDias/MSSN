@@ -14,9 +14,9 @@ public class ParticleSystemApp implements IProcessingApp {
     private double[] window = {-10, 10, -10, 10};
     private float[] viewport = {0, 0, 1, 1};
     private SubPlot plt;
-    private float[] velParams = {PApplet.radians(90), PApplet.radians(20), 1, 3};
-    private float[] lifetimeParams = {3, 5};
-    private float[] radiusParams = {0.1f, 0.2f};
+    private float[] velParams = {PApplet.radians(90), PApplet.radians(360), 1, 3};
+    private float[] lifetimeParams = {0.5f, 2};
+    private float[] radiusParams = {1f, 3f};
     private float flow = 500;
 
     @Override
