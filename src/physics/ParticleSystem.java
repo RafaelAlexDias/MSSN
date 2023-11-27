@@ -12,6 +12,7 @@ public class ParticleSystem extends Body{
     private List<Particle> particles;
     private PSControl psc;
 
+    // Construtor de um "ParticleSystem"
     protected ParticleSystem(PVector pos, PVector vel, float mass,
                              float radius, PSControl psc) {
         super(pos, vel, mass, radius, 0);
@@ -19,10 +20,12 @@ public class ParticleSystem extends Body{
         this.particles = new ArrayList<Particle>();
     }
 
+    // Método para obter o "PSControl" de um "ParticleSystem"
     public PSControl getPSControl() {
         return psc;
     }
 
+    // Método "move" de um "ParticleSystem"
     @Override
     public void move(float dt) {
         super.move(dt);
@@ -36,6 +39,7 @@ public class ParticleSystem extends Body{
         }
     }
 
+    // Método para adicionar várias "Particle"
     public void addParticles(float dt) {
         float particlesPerFrame = psc.getFlow() * dt;
         int n = (int) particlesPerFrame;
@@ -48,6 +52,7 @@ public class ParticleSystem extends Body{
         }
     }
 
+    // Método para adicionar uma "Particle"
     private void addOneParticle() {
         Particle particle = new Particle(
                 new PVector(),
@@ -59,6 +64,7 @@ public class ParticleSystem extends Body{
         particles.add(particle);
     }
 
+    // Método "display" de um "ParticleSystem"
     @Override
     public void display(PApplet p, SubPlot plt) {
         for (Particle particle : particles) {

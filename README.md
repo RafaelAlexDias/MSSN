@@ -5,11 +5,11 @@
 #### B. Queda livre com atrito (Silico)
 #### C. Sistema Solar & Sistemas de Partículas (com iteradores)
 #### D. Agentes Autónomos - Comportamentos individuais
-* 1. Boid com acerador e travão (done)
-* 5. Comportamento Wander (done)
+* 1. Boid com acerador e travão 
+* 5. Comportamento Wander
 #### E. Agentes Autónomos - Comportamentos de grupo (Flocking)
-* 1. Predador a perseguir uma presa (half - done, não está muito bem implementado)
-* 3. Flock com liderança (half-done, não lidera mas está controlável)
+* 1. Predador a perseguir uma presa
+* 3. Flock com liderança
 
 <br>
 

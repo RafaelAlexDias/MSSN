@@ -40,7 +40,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new DebuggingApp();
+        app = new FallingBodyApp();
         PApplet.main(ProcessingSetup.class);
     }
 }

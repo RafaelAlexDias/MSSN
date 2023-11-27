@@ -191,6 +191,7 @@ public class SolarSystemApp implements IProcessingApp {
         neptune.display(parent, plt);
     }
 
+    // Método para fazer algo quando uma determinada tecla é pressionada
     @Override
     public void keyPressed(PApplet parent) {
         if (parent.key == '1') {
@@ -207,13 +208,11 @@ public class SolarSystemApp implements IProcessingApp {
         }
     }
 
+    // Método para fazer algo quando o rato é pressionado
     @Override
-    public void mousePressed(PApplet parent) {
+    public void mousePressed(PApplet parent) {}
 
-    }
-
+    // Método para fazer algo quando o rato é arrastado
     @Override
-    public void mouseDragged(PApplet parent) {
-
-    }
+    public void mouseDragged(PApplet parent) {}
 }
