@@ -37,8 +37,8 @@ public class FlockWASDApp implements IProcessingApp {
         float[] bb = plt.getBoundingBox();
         parent.fill(255, 64);
         parent.rect(bb[0], bb[1], bb[2], bb[3]);
-        // O "Flock" passa a seguir este "Boid" que está a ser controlado
-        flock.followBoidControl(boidControl, velocity, dt);
+        // Aplicação dos comportamentos ao "Flock"
+        flock.applyBehavior(dt);
         // Display do "Flock"
         flock.display(parent, plt);
     }

@@ -54,40 +54,6 @@ public class Flock {
         }
     }
 
-    // Método que controla o movimento dos elementos de um "Flock" em direção a um outro "Boid" também elemento do
-    // mesmo "Flock"
-    public void followBoidControl(Boid boidControl, float velocity, float dt) {
-        // Calcula a posição média dos boids
-        PVector averagePosition = new PVector();
-        for (Boid b : boids) {
-            averagePosition.add(b.getPos());
-        }
-        averagePosition.div(boids.size());
-        // Calcula a direção média dos boids
-        PVector averageDirection = new PVector();
-        for (Boid b : boids) {
-            averageDirection.add(b.getVel());
-        }
-        averageDirection.div(boids.size());
-        for (Boid b : boids) {
-            // Calcula a direção para o boidControl
-            PVector followDirection = PVector.sub(boidControl.getPos(), b.getPos());
-            followDirection.normalize();
-            // Aplica uma força na direção do boidControl
-            followDirection.mult(velocity);  // Ajuste a velocidade conforme necessário
-            b.applyForce(followDirection);
-            // Adiciona comportamento de coesão (opcional)
-            PVector cohesionForce = PVector.sub(averagePosition, b.getPos());
-            cohesionForce.normalize();
-            cohesionForce.mult(0.1f);  // Ajuste a intensidade conforme necessário
-            b.applyForce(cohesionForce);
-            // Adiciona comportamento de alinhamento (opcional)
-            PVector alignmentForce = PVector.sub(averageDirection, b.getVel());
-            alignmentForce.normalize();
-            alignmentForce.mult(0.1f);  // Ajuste a intensidade conforme necessário
-            b.applyForce(alignmentForce);
-        }
-    }
 
     // Método que obtém o número total de "Boids" em um "Flock"
     public int getNBoids() {
