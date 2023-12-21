@@ -55,7 +55,7 @@ public class Boid extends Body {
 
     // Método para configurar a forma de um "Boid"
     public void setShape(PApplet p, SubPlot plt) {
-        float[] rr = plt.getDimInPixel(radius, radius);
+        float[] rr = plt.getVectorCoord(radius, radius);
         shape = p.createShape();
         shape.beginShape();
         shape.noStroke();

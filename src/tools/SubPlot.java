@@ -75,16 +75,16 @@ public class SubPlot {
         return getBox(b[0], b[1], b[2], b[3]);
     }
 
-    public float[] getDimInPixel(double dx, double dy) {
+    public float[] getVectorCoord(double dx, double dy) {
         float[] v = new float[2];
         v[0] = (float)(dx*mx);
-        v[1] = (float)(dy*my);
+        v[1] = (float)(-dy*my);
 
         return v;
     }
 
-    public float[] getDimInPixel(double[] dxdy) {
-        return getDimInPixel(dxdy[0], dxdy[1]);
+    public float[] getVectorCoord(double[] dxdy) {
+        return getVectorCoord(dxdy[0], dxdy[1]);
     }
 
     public float[] getViewport() {

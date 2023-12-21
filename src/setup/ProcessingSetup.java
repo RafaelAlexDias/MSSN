@@ -3,7 +3,10 @@ package setup;
 import aa.*;
 import ac.SketchACElementar;
 import ac.SketchGOL;
+import chaos_game.ChaosGame;
+import chaos_game.Hexagon_ChaosGame;
 import dla.DLA;
+import fractals.LSystemApp;
 import physics.*;
 import processing.core.PApplet;
 
@@ -40,7 +43,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new SolarSystemApp();
+        app = new LSystemApp();
         PApplet.main(ProcessingSetup.class);
     }
 }

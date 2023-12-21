@@ -94,7 +94,7 @@ public class Eye {
         p.noFill();
         p.stroke(255, 0, 0);
         p.strokeWeight(3);
-        float[] dd = plt.getDimInPixel(me.dna.visionDistance, me.dna.visionSafeDistance);
+        float[] dd = plt.getVectorCoord(me.dna.visionDistance, me.dna.visionSafeDistance);
         p.rotate(me.dna.visionAngle);
         p.line(0, 0, dd[0], 0);
         p.rotate(-2 * me.dna.visionAngle);

@@ -19,7 +19,7 @@ public class Body extends Mover{
     public void display(PApplet p, SubPlot plt) {
         p.pushStyle();
         float[] pp = plt.getPixelCoord(pos.x, pos.y);
-        float[] r = plt.getDimInPixel(radius, radius);
+        float[] r = plt.getVectorCoord(radius, radius);
         p.noStroke();
         p.fill(color);
         p.circle(pp[0], pp[1], 2*r[0]);
