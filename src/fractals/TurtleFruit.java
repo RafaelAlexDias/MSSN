@@ -4,11 +4,11 @@ import processing.core.PApplet;
 import processing.core.PVector;
 import tools.SubPlot;
 
-public class Turtle {
+public class TurtleFruit {
     private float len;
     private float angle;
 
-    public Turtle(float len, float angle) {
+    public TurtleFruit(float len, float angle) {
         this.len = len;
         this.angle = angle;
     }

@@ -1,13 +1,6 @@
 package setup;
 
-import aa.*;
-import ac.SketchACElementar;
-import ac.SketchGOL;
-import chaos_game.ChaosGame;
-import chaos_game.Hexagon_ChaosGame;
-import dla.DLA;
-import fractals.LSystemApp;
-import physics.*;
+import chaos_game.XSides_ChaosGame;
 import processing.core.PApplet;
 
 public class ProcessingSetup extends PApplet{
@@ -43,7 +36,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new LSystemApp();
+        app = new XSides_ChaosGame();
         PApplet.main(ProcessingSetup.class);
     }
 }

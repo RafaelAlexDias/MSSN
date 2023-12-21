@@ -5,7 +5,7 @@ import processing.core.PApplet;
 import processing.core.PVector;
 import setup.IProcessingApp;
 
-// MSSN: Chaos Game v1 (september 2019)
+
 public class ChaosGame implements IProcessingApp {
 
     private float x, y;
@@ -16,25 +16,29 @@ public class ChaosGame implements IProcessingApp {
     public void setup(PApplet p) {
         this.p = p;
         initializeAndDrawInitialRandomPoint();
-        initializeAndDrawInitialShape(); // e.g., a triangle for a Sierpinski triangle
+        initializeAndDrawInitialShape();
     }
 
     @Override
     public void draw(PApplet p, float dt) {
-        // foreach draw method, draws one hundred points (purpose: draw faster)
+        // Loop para realizar 100 iterações do jogo do caos a cada frame
         for (int i = 0; i != 100; i++) {
+            // Escolhe aleatoriamente um ponto do conjunto de pontos
             int r = (int) Math.floor(p.random(points.size()));
+            // Atualiza a posição atual para a média do ponto escolhido e a posição atual
             x = PApplet.lerp(x, points.get(r).x, 0.5f);
             y = PApplet.lerp(y, points.get(r).y, 0.5f);
             p.point(x, y);
         }
     }
 
+    // Inicializa e desenha um ponto aleatório inicial
     private void initializeAndDrawInitialRandomPoint() {
         PVector randomInitialPoint = new PVector(p.random(p.width), p.random(p.height));
         p.point(randomInitialPoint.x, randomInitialPoint.y);
     }
 
+    // Inicializa e desenha a forma inicial com três pontos
     private void initializeAndDrawInitialShape() {
         points = new ArrayList<>();
         points.add(new PVector(p.width/2, 0));
@@ -46,17 +50,11 @@ public class ChaosGame implements IProcessingApp {
     }
 
     @Override
-    public void mousePressed(PApplet p) {
-        throw new UnsupportedOperationException("mousePressed event is not implemented!");
-    }
+    public void mousePressed(PApplet p) {}
 
     @Override
-    public void mouseDragged(PApplet parent) {
-
-    }
+    public void mouseDragged(PApplet parent) {}
 
     @Override
-    public void keyPressed(PApplet p) {
-        throw new UnsupportedOperationException("keyPressed event is not implemented!");
-    }
+    public void keyPressed(PApplet p) {}
 }
