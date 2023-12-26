@@ -1,16 +1,19 @@
 # ISEL - MSSN - Semestre 2023/24
-##  <center> Projeto 2 </center>
+##  <center> Projeto 3 </center>
 
 ### Exercícios Realisados:
-#### B. Queda livre com atrito (Silico)
-#### C. Sistema Solar & Sistemas de Partículas (com iteradores) - (SolarSystemApp)
-#### D. Agentes Autónomos - Comportamentos individuais
-* 1. Boid com acerador e travão - (BoidAceleradorTravaoApp)
-* 5. Comportamento Wander - (BoidWanderSeekApp)
-#### E. Agentes Autónomos - Comportamentos de grupo (Flocking)
-* 1. Predador a perseguir uma presa - (FlockPredatorApp)
-* 3. Flock com liderança - (FlockWASD)
-* 4. Debugging - (DebuggingApp)
+#### A. Função Logística
+* 3.
+#### B. Jogo do Caos
+* 1. (ChaosGame)
+* 2. (XSides_ChaosGame)
+* 3. (Pentagon_ChaosGame)
+#### C. Gramáticas de Lindemayer
+* 1. (ForestApp)
+#### D. Conjuntos de Julia e Mandelbrot
+* 1. (MandelbrotApp) - Correr no ProcessingSetup da pasta "Mandelbrot"
+#### E. Ferramentas para criar fractais
+#### F. Pesquisa e ensaio
 
 <br>
 

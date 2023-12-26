@@ -5,8 +5,6 @@ import processing.core.PVector;
 import setup.IProcessingApp;
 import tools.SubPlot;
 
-import java.security.PrivateKey;
-
 public class LSystemApp implements IProcessingApp {
     private LSystem lsys;
     private double[] window = {-15, 15, 0, 15};

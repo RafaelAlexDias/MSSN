@@ -1,4 +1,4 @@
-package setup;
+package fractals.Mandelbrot;
 
 import processing.core.PApplet;
 
@@ -34,8 +34,12 @@ public class ProcessingSetup extends PApplet{
     public void mouseDragged() {
         app.mouseDragged(this);
     }
+    @Override
+    public void mouseReleased() {
+        app.mouseReleased(this);
+    }
     public static void main(String[] args) {
-        // app = new MandelbrotApp();
+        app = new MandelbrotApp();
         PApplet.main(ProcessingSetup.class);
     }
 }

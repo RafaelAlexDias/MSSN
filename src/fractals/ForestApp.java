@@ -1,8 +1,8 @@
 package fractals;
 
+import fractals.Mandelbrot.IProcessingApp;
 import processing.core.PApplet;
 import processing.core.PVector;
-import setup.IProcessingApp;
 import tools.SubPlot;
 
 import java.util.ArrayList;
@@ -85,4 +85,9 @@ public class ForestApp implements IProcessingApp {
 
     @Override
     public void mouseDragged(PApplet parent) {}
+
+    @Override
+    public void mouseReleased(PApplet parent) {
+
+    }
 }
