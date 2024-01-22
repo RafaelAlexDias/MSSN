@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public class Cell {
 
     private int row, col;
-    private int state;
+    protected int state;
     private Cell[] neighbors;
     protected CellularAutomata ca;
 
@@ -35,6 +35,7 @@ public class Cell {
 
     public void display(PApplet p) {
         p.pushStyle();
+        p.noStroke();
         p.fill(ca.getStateColors()[state]);
         p.rect(ca.xmin+col*ca.cellWidth, ca.ymin+row*ca.cellHeight, ca.cellWidth, ca.cellHeight);
         p.popStyle();

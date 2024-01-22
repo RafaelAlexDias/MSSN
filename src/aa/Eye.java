@@ -22,6 +22,12 @@ public class Eye {
         target = allTrackingBodies.get(0);
     }
 
+    public Eye(Boid me, Eye eye) {
+        allTrackingBodies = eye.allTrackingBodies;
+        this.me = me;
+        target = eye.target;
+    }
+
     // Método para obter a lista de corpos vistos a uma longa distância
     public List<Body> getFarSight() {
         return farSight;

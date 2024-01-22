@@ -16,7 +16,7 @@ public class Boid extends Body {
     private PShape shape;
     protected DNA dna;
     protected Eye eye;
-    private List<Behavior> behaviors;
+    protected List<Behavior> behaviors;
     protected float phiWander;
     private double[] window;
     private float sumWeights;

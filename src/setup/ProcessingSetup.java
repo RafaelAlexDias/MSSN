@@ -2,6 +2,8 @@ package setup;
 
 import ac.TestCA;
 import ac.TestMajorityCA;
+import ecosystem.TestEcosystemApp;
+import ecosystem.TestTerrainApp;
 import processing.core.PApplet;
 
 public class ProcessingSetup extends PApplet{
@@ -37,7 +39,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new TestMajorityCA();
+        app = new TestEcosystemApp();
         PApplet.main(ProcessingSetup.class);
     }
 }

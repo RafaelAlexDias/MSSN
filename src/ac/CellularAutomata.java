@@ -1,6 +1,7 @@
 package ac;
 
 import processing.core.PApplet;
+import tools.CustomRandomGenerator;
 import tools.SubPlot;
 
 public class CellularAutomata {
@@ -38,6 +39,10 @@ public class CellularAutomata {
         }
     }
 
+    public void setStateColors(int[] colors) {
+        this.colors = colors;
+    }
+
     public int[] getStateColors() {
         return colors;
     }
@@ -59,7 +64,16 @@ public class CellularAutomata {
         }
     }
 
-    public Cell world2Ceell(double x, double y) {
+    public void initRandomCustom(double[] pmf) {
+        CustomRandomGenerator crg = new CustomRandomGenerator(pmf);
+        for (int i=0; i<nrows; i++) {
+            for (int j=0; j<ncols; j++) {
+                cells[i][j].setState(crg.getRandomClass());
+            }
+        }
+    }
+
+    public Cell world2Cell(double x, double y) {
         float[] xy = plt.getPixelCoord(x, y);
         return pixel2Cell(xy[0], xy[1]);
     }

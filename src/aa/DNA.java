@@ -30,6 +30,22 @@ public class DNA {
         deltaPhiWander = (float) Math.PI/8;
     }
 
+    public DNA(DNA dna) {
+        maxSpeed = dna.maxSpeed;
+        maxForce = dna.maxForce;
+
+        visionDistance = dna.visionDistance;
+        visionSafeDistance = dna.visionSafeDistance;
+        visionAngle = dna.visionAngle;
+
+        deltaTPursuit = dna.deltaTPursuit;
+        radiusArrive = dna.radiusArrive;
+
+        deltaTWander = dna.deltaTWander;
+        deltaPhiWander = dna.deltaPhiWander;
+        radiusWander = dna.radiusWander;
+    }
+
     public static float random(float min, float max) {
         return (float)(min +(max - min) * Math.random());
     }
