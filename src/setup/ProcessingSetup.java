@@ -1,5 +1,6 @@
 package setup;
 
+import ac.TestCA;
 import processing.core.PApplet;
 
 public class ProcessingSetup extends PApplet{
@@ -35,7 +36,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        // app = new MandelbrotApp();
+        app = new TestCA();
         PApplet.main(ProcessingSetup.class);
     }
 }
