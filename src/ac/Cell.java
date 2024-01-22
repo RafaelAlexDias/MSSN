@@ -7,7 +7,7 @@ public class Cell {
     private int row, col;
     private int state;
     private Cell[] neighbors;
-    private CellularAutomata ca;
+    protected CellularAutomata ca;
 
     public Cell(CellularAutomata ca, int row, int col) {
         this.ca = ca;

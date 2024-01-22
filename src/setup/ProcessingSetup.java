@@ -1,6 +1,7 @@
 package setup;
 
 import ac.TestCA;
+import ac.TestMajorityCA;
 import processing.core.PApplet;
 
 public class ProcessingSetup extends PApplet{
@@ -36,7 +37,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new TestCA();
+        app = new TestMajorityCA();
         PApplet.main(ProcessingSetup.class);
     }
 }

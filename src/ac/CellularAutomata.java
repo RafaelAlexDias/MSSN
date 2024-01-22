@@ -5,11 +5,11 @@ import tools.SubPlot;
 
 public class CellularAutomata {
 
-    private int nrows;
-    private int ncols;
-    private int nStates;
+    protected int nrows;
+    protected int ncols;
+    protected int nStates;
     private int radiusNeigh;
-    private Cell[][] cells;
+    protected Cell[][] cells;
     private int[] colors;
     protected float cellWidth, cellHeight;
     protected float xmin, ymin;
@@ -42,7 +42,7 @@ public class CellularAutomata {
         return colors;
     }
 
-    private void createCells() {
+    protected void createCells() {
         for (int i=0; i<nrows; i++) {
             for (int j=0; j<ncols; j++) {
                 cells[i][j] = new Cell(this, i, j);
@@ -74,7 +74,7 @@ public class CellularAutomata {
         return cells[row][col];
     }
 
-    private void setMooreNeighbors() {
+    protected void setMooreNeighbors() {
         int NN = (int) Math.pow(2*radiusNeigh+1, 2);
         for (int i=0; i<nrows; i++) {
             for (int j=0; j<ncols; j++) {
