@@ -1,9 +1,7 @@
 package setup;
 
-import ac.TestCA;
-import ac.TestMajorityCA;
+import ecosystem.EcosystemApp;
 import ecosystem.TestEcosystemApp;
-import ecosystem.TestTerrainApp;
 import processing.core.PApplet;
 
 public class ProcessingSetup extends PApplet{
@@ -11,7 +9,10 @@ public class ProcessingSetup extends PApplet{
     private float lastUpdateTime;
     @Override
     public void settings(){
-        size(800, 700);
+        // Para o EcosystemApp
+        size(1028, 720);
+        // Para tudo o resto:
+        // size(800, 700);
     }
     @Override
     public void setup(){
@@ -39,7 +40,7 @@ public class ProcessingSetup extends PApplet{
         app.mouseDragged(this);
     }
     public static void main(String[] args) {
-        app = new TestEcosystemApp();
+        app = new EcosystemApp();
         PApplet.main(ProcessingSetup.class);
     }
 }

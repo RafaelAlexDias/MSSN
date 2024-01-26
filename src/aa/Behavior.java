@@ -3,7 +3,7 @@ package aa;
 import processing.core.PVector;
 
 public abstract class Behavior {
-    private float weight;
+    protected float weight;
 
     // Construtor de um "Behavior"
     public Behavior(float weight) {

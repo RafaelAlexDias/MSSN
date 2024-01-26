@@ -16,6 +16,7 @@ public class Patch extends MajorityCell {
 
     public void setFertile() {
         state = WorldConstants.PatchType.FERTILE.ordinal();
+        setImg();
         eatenTime = System.currentTimeMillis();
     }
 
@@ -23,6 +24,7 @@ public class Patch extends MajorityCell {
         if (state == WorldConstants.PatchType.FERTILE.ordinal()
                 && System.currentTimeMillis() > (eatenTime + timeToGrow)) {
             state = WorldConstants.PatchType.FOOD.ordinal();
+            setImg();
         }
     }
 }

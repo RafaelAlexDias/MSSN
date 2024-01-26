@@ -1,6 +1,7 @@
 package ac;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Cell {
 
@@ -8,6 +9,7 @@ public class Cell {
     protected int state;
     private Cell[] neighbors;
     protected CellularAutomata ca;
+    private PImage img;
 
     public Cell(CellularAutomata ca, int row, int col) {
         this.ca = ca;
@@ -33,11 +35,19 @@ public class Cell {
         return this.state;
     }
 
+    public void setImg() {
+        this.img = ca.p.loadImage(ca.getTerrainArt()[state]);
+    }
+
     public void display(PApplet p) {
         p.pushStyle();
         p.noStroke();
-        p.fill(ca.getStateColors()[state]);
-        p.rect(ca.xmin+col*ca.cellWidth, ca.ymin+row*ca.cellHeight, ca.cellWidth, ca.cellHeight);
+        //p.fill(ca.getStateColors()[state]);
+        if (img == null) {
+            setImg();
+        }
+        p.image(img, ca.xmin+col*ca.cellWidth, ca.ymin+row*ca.cellHeight, ca.cellWidth, ca.cellHeight);
+        //p.rect(ca.xmin+col*ca.cellWidth, ca.ymin+row*ca.cellHeight, ca.cellWidth, ca.cellHeight);
         p.popStyle();
     }
 

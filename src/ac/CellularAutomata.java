@@ -1,8 +1,13 @@
 package ac;
 
+import ecosystem.WorldConstants;
 import processing.core.PApplet;
+import processing.core.PImage;
+import processing.core.PVector;
 import tools.CustomRandomGenerator;
 import tools.SubPlot;
+
+import java.util.ArrayList;
 
 public class CellularAutomata {
 
@@ -12,17 +17,21 @@ public class CellularAutomata {
     private int radiusNeigh;
     protected Cell[][] cells;
     private int[] colors;
+    private String[] art;
     protected float cellWidth, cellHeight;
     protected float xmin, ymin;
     private SubPlot plt;
+    protected PApplet p;
 
     public CellularAutomata(PApplet p, SubPlot plt, int nrows, int ncols, int nStates, int radiusNeigh) {
+        this.p = p;
         this.nrows = nrows;
         this.ncols = ncols;
         this.nStates = nStates;
         this.radiusNeigh = radiusNeigh;
         cells = new Cell[nrows][ncols];
         colors = new int[nStates];
+        art = new String[nStates];
         float[] bb = plt.getBoundingBox();
         xmin = bb[0];
         ymin = bb[1];
@@ -45,6 +54,14 @@ public class CellularAutomata {
 
     public int[] getStateColors() {
         return colors;
+    }
+
+    public void setTerrainArt(String[] art) {
+        this.art = art;
+    }
+
+    public String[] getTerrainArt() {
+        return art;
     }
 
     protected void createCells() {
@@ -71,6 +88,13 @@ public class CellularAutomata {
                 cells[i][j].setState(crg.getRandomClass());
             }
         }
+    }
+
+    public PVector getCenterCell(int row, int col) {
+        float x = (col + 0.5f) * cellWidth;
+        float y = (row + 0.5f) * cellHeight;
+        double[] w = plt.getWorldCoord(x, y);
+        return new PVector((float)w[0], (float)w[1]);
     }
 
     public Cell world2Cell(double x, double y) {

@@ -14,12 +14,12 @@ public class DNA {
 
     public DNA() {
         // Physics
-        maxSpeed = random(3, 5);
-        maxForce = random(4, 7);
+        maxSpeed = random(1f, 2f);
+        maxForce = random(4f, 7f);
         // Vision
-        visionDistance = random(2, 2);
+        visionDistance = random(1.5f, 2.5f);
         visionSafeDistance = 0.25f * visionDistance;
-        visionAngle = (float)Math.PI * 0.8f;
+        visionAngle = (float)Math.PI * 0.3f;
         // Pursuit
         deltaTPursuit = random(0.5f, 1f);
         // Arrive
@@ -30,7 +30,7 @@ public class DNA {
         deltaPhiWander = (float) Math.PI/8;
     }
 
-    public DNA(DNA dna) {
+    public DNA(DNA dna, boolean mutate) {
         maxSpeed = dna.maxSpeed;
         maxForce = dna.maxForce;
 
@@ -44,6 +44,12 @@ public class DNA {
         deltaTWander = dna.deltaTWander;
         deltaPhiWander = dna.deltaPhiWander;
         radiusWander = dna.radiusWander;
+        if(mutate) mutate();
+    }
+
+    private void mutate() {
+        maxSpeed += random(-0.2f, 0.2f);
+        maxSpeed = Math.max(0, maxSpeed);
     }
 
     public static float random(float min, float max) {

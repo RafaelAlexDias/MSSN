@@ -1,8 +1,12 @@
 package ecosystem;
 
 import ac.MajorityCA;
+import physics.Body;
 import processing.core.PApplet;
 import tools.SubPlot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Terrain extends MajorityCA {
     public Terrain(PApplet p, SubPlot plt) {
@@ -20,6 +24,19 @@ public class Terrain extends MajorityCA {
             }
         }
         setMooreNeighbors();
+    }
+
+    public List<Body> getObstacles() {
+        List<Body> bodies = new ArrayList<Body>();
+        for(int i=0; i<nrows; i++) {
+            for(int j=0; j<ncols; j++) {
+                if(cells[i][j].getState() == WorldConstants.PatchType.OBSTACLE.ordinal()) {
+                    Body b = new Body(this.getCenterCell(i, j));
+                    bodies.add(b);
+                }
+            }
+        }
+        return bodies;
     }
 
     public void regenerate() {

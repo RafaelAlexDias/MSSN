@@ -13,7 +13,8 @@ import java.util.List;
 public class Boid extends Body {
 
     private SubPlot plt;
-    private PShape shape;
+    protected String shapeString;
+    protected PShape shape;
     protected DNA dna;
     protected Eye eye;
     protected List<Behavior> behaviors;
@@ -29,7 +30,37 @@ public class Boid extends Body {
         behaviors = new ArrayList<Behavior>();
         this.plt = plt;
         window = plt.getWindow();
-        setShape(p, plt);
+        // setShape(p, plt);
+    }
+
+    protected Boid(PVector pos, float mass, float radius,
+                   String shapeString, PApplet p, SubPlot plt) {
+        super(pos, new PVector(), mass, radius, shapeString);
+        dna = new DNA();
+        behaviors = new ArrayList<Behavior>();
+        this.shapeString = shapeString;
+        this.shape = p.loadShape(shapeString);
+        this.plt = plt;
+        window = plt.getWindow();
+        // setShape(p, plt);
+    }
+
+    public void mutateBehaviors() {
+        for(Behavior behavior : behaviors) {
+            if(behavior instanceof AvoidObstacle) {
+                behavior.weight += DNA.random(-0.5f, 0.5f);
+                behavior.weight = Math.max(0, behavior.weight);
+            }
+        }
+        updateSumWeights();
+    }
+
+    public List<Behavior> getBehaviors() {
+        return behaviors;
+    }
+
+    public DNA getDNA() {
+        return dna;
     }
 
     // Método setter para um Eye
@@ -153,9 +184,9 @@ public class Boid extends Body {
     public void display(PApplet p, SubPlot plt) {
         p.pushMatrix();
         float[] pp = plt.getPixelCoord(pos.x, pos.y);
-        p.translate(pp[0], pp[1]);
-        p.rotate(-vel.heading());
-        p.shape(shape);
+        // p.translate(pp[0], pp[1]);
+        // p.rotate(-vel.heading());
+        p.shape(shape, pp[0] - 10f, pp[1] - 10f, 20f, 20f);
         p.popMatrix();
     }
 }
