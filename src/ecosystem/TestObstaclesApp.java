@@ -20,7 +20,7 @@ public class TestObstaclesApp implements IProcessingApp {
         for(int i=0; i<2; i++) {
             terrain.majorityRule();
         }
-        population = new Population(parent, plt, terrain, WorldConstants.PREY_ART);
+        population = new Population(parent, plt, terrain);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class TestObstaclesApp implements IProcessingApp {
         terrain.display(parent);
         population.display(parent, plt);
 
-        System.out.println("numAnimals = " + population.getNumAnimals());
+        System.out.println("numAnimals = " + population.getNumPreys());
     }
 
     private int[] getColors(PApplet p) {

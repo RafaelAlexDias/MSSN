@@ -50,7 +50,7 @@ public class TestEcosystemApp implements IProcessingApp {
         for(int i=0; i<2; i++) {
             terrain.majorityRule();
         }
-        population = new Population(parent, plt, terrain, WorldConstants.PREY_ART);
+        population = new Population(parent, plt, terrain);
         timer = 0;
         updateGraphTime = timer + intervalUpdate;
     }
@@ -67,11 +67,11 @@ public class TestEcosystemApp implements IProcessingApp {
 
         if(timer > updateGraphTime) {
             System.out.println(String.format("Time = %ds", (int)timer));
-            System.out.println("numAnimals = " + population.getNumAnimals());
-            System.out.println("MeanMaxSpeed = " + population.getMeanMaxSpeed());
-            System.out.println("StdMaxSpeed = " + population.getStdMaxSpeed());
-            System.out.println("meanWeightWander = " + population.getMeanWeights()[0] +
-                    " meanWeightAvoid = " + population.getMeanWeights()[1]);
+            System.out.println("numAnimals = " + population.getNumPreys());
+            System.out.println("MeanMaxSpeed = " + population.getPreyMeanMaxSpeed());
+            System.out.println("StdMaxSpeed = " + population.getPreyStdMaxSpeed());
+            System.out.println("meanWeightWander = " + population.getPreyMeanWeights()[0] +
+                    " meanWeightAvoid = " + population.getPreyMeanWeights()[1]);
             System.out.println("");
             /*
             tg1.plot(timer, population.getNumAnimals());

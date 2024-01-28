@@ -14,7 +14,7 @@ public class DNA {
 
     public DNA() {
         // Physics
-        maxSpeed = random(1f, 2f);
+        maxSpeed = random(1f, 1.5f);
         maxForce = random(4f, 7f);
         // Vision
         visionDistance = random(1.5f, 2.5f);
