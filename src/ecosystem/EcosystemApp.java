@@ -6,19 +6,13 @@ import setup.IProcessingApp;
 import tools.SubPlot;
 
 public class EcosystemApp implements IProcessingApp {
-    private float timeDuration = 60;
-    private float refPopulation = 720;
-    private float refMeanMaxSpeed = 1f;
-    private float refStdMaxSpeed = 0.2f;
-
     private float[] viewport = {0f, 0f, 0.7f, 1f};
 
     private SubPlot plt;
 
     private Terrain terrain;
     private Population population;
-    private float timer, updateGraphTime;
-    private float intervalUpdate = 1;
+    private float timer;
     private boolean paused = false;
 
     private float buttonWidth = 162;
@@ -39,7 +33,6 @@ public class EcosystemApp implements IProcessingApp {
         population = new Population(parent, plt, terrain);
 
         timer = 0;
-        updateGraphTime = timer + intervalUpdate;
 
         buttonX = parent.width - buttonWidth - 65;
         buttonY = parent.height - buttonHeight - 40;
@@ -79,30 +72,15 @@ public class EcosystemApp implements IProcessingApp {
 
         if(!paused) {
             timer += dt;
-
             terrain.regenerate();
             population.update(dt, terrain);
             population.update(dt, terrain);
-            /*
-            if(timer > updateGraphTime) {
-                System.out.println(String.format("Time = %ds", (int)timer));
-                System.out.println("numPreys = " + population.getNumPreys());
-                System.out.println("numPredators = " + population.getNumPredator());
-                System.out.println("MeanMaxSpeed = " + population.getPreyMeanMaxSpeed());
-                System.out.println("StdMaxSpeed = " + population.getPreyStdMaxSpeed());
-                System.out.println("meanWeightWander = " + population.getPreyMeanWeights()[0] +
-                        " meanWeightAvoid = " + population.getPreyMeanWeights()[1]);
-                System.out.println("");
-                updateGraphTime = timer + intervalUpdate;
-            }
-             */
         }
 
     }
 
     private String[] getTerrainArt(PApplet p) {
         String[] art = new String[WorldConstants.NSTATES];
-
         for(int i=0; i<WorldConstants.NSTATES; i++) {
             art[i] = WorldConstants.TERRAIN_ART[i];
         }
