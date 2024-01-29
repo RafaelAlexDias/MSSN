@@ -19,14 +19,8 @@ title __ECOSYSTEM's Class Diagram__\n
         - buttonWidth : float
         - buttonX : float
         - buttonY : float
-        - intervalUpdate : float
         - paused : boolean
-        - refMeanMaxSpeed : float
-        - refPopulation : float
-        - refStdMaxSpeed : float
-        - timeDuration : float
         - timer : float
-        - updateGraphTime : float
         - viewport : float[]
         + draw()
         + keyPressed()
@@ -116,34 +110,9 @@ title __ECOSYSTEM's Class Diagram__\n
   
 
   namespace ecosystem {
-    class ecosystem.TestEcosystemApp {
-        - intervalUpdate : float
-        - refMeanMaxSpeed : float
-        - refPopulation : float
-        - refStdMaxSpeed : float
-        - timeDuration : float
-        - timer : float
-        - updateGraphTime : float
-        - viewGraph1 : float[]
-        - viewGraph2 : float[]
-        - viewGraph3 : float[]
-        - viewport : float[]
-        - winGraph1 : double[]
-        - winGraph2 : double[]
-        - winGraph3 : double[]
-        + draw()
-        + keyPressed()
-        + mouseDragged()
-        + mousePressed()
-        + setup()
-        - getTerrainArt()
-    }
-  }
-  
-
-  namespace ecosystem {
     class ecosystem.WorldConstants {
         {static} + ENERGY_FROM_PLANT : float
+        {static} + ENERGY_FROM_PREY : float
         {static} + INI_PREDATOR_ENERGY : float
         {static} + INI_PREDATOR_POPULATION : int
         {static} + INI_PREY_ENERGY : float
@@ -188,16 +157,6 @@ title __ECOSYSTEM's Class Diagram__\n
   ecosystem.Prey -up-|> ecosystem.Animal
   ecosystem.Prey o-- tools.SubPlot : plt
   ecosystem.Terrain -up-|> ac.MajorityCA
-  ecosystem.TestEcosystemApp .up.|> setup.IProcessingApp
-  ecosystem.TestEcosystemApp o-- tools.SubPlot : plt
-  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph1
-  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph2
-  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph3
-  ecosystem.TestEcosystemApp o-- ecosystem.Population : population
-  ecosystem.TestEcosystemApp o-- ecosystem.Terrain : terrain
-  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg1
-  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg2
-  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg3
   ecosystem.WorldConstants +-down- ecosystem.WorldConstants.PatchType
 
 

@@ -309,12 +309,6 @@ title __MSSN's Class Diagram__\n
   
 
   namespace ecosystem {
-    class ecosystem.TestEcosystemApp {
-    }
-  }
-  
-
-  namespace ecosystem {
     class ecosystem.WorldConstants {
     }
   }
@@ -618,16 +612,6 @@ title __MSSN's Class Diagram__\n
   ecosystem.Prey -up-|> ecosystem.Animal
   ecosystem.Prey o-- tools.SubPlot : plt
   ecosystem.Terrain -up-|> ac.MajorityCA
-  ecosystem.TestEcosystemApp .up.|> setup.IProcessingApp
-  ecosystem.TestEcosystemApp o-- tools.SubPlot : plt
-  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph1
-  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph2
-  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph3
-  ecosystem.TestEcosystemApp o-- ecosystem.Population : population
-  ecosystem.TestEcosystemApp o-- ecosystem.Terrain : terrain
-  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg1
-  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg2
-  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg3
   fractals.ForestApp .up.|> fractals.Mandelbrot.IProcessingApp
   fractals.ForestApp o-- tools.SubPlot : plt
   fractals.FruitTreeApp .up.|> setup.IProcessingApp
