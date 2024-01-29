@@ -29,19 +29,14 @@ public class Predator extends Animal {
     @Override
     public void eat(Terrain terrain) {
         Body boid = eye.getClosestBoid();
-        this.eye.setTarget(boid);
-
-        if (boid != null) { // Verifica se boid não é nulo
-            PVector boidPos = boid.getPos();
-            if (PVector.dist(this.pos, boidPos) < eatRange) {
-                this.energy += WorldConstants.ENERGY_FROM_PREY;
-                List<Body> preyList = this.eye.getAllTrackingBodies();
-                preyList.remove(boid);
-                this.eye.setAllTrackingBodies(preyList);
-            }
+        PVector boidPos = boid.getPos();
+        if (PVector.dist(this.pos, boidPos) < eatRange) {
+            this.energy += WorldConstants.ENERGY_FROM_PREY;
+            List<Body> preyList = this.eye.getAllTrackingBodies();
+            preyList.remove(boid);
+            this.eye.setAllTrackingBodies(preyList);
         }
     }
-
 
     @Override
     public Animal reproduce(boolean mutate) {

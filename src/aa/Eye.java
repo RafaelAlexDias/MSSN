@@ -19,7 +19,7 @@ public class Eye {
     public Eye(Boid me, List<Body> allTrackingBodies) {
         this.me = me;
         this.allTrackingBodies = allTrackingBodies;
-        target = allTrackingBodies.get(0);
+        target = getClosestBoid();
     }
 
     public Eye(Boid me, Eye eye) {
@@ -46,18 +46,14 @@ public class Eye {
         this.allTrackingBodies = allTrackingBodies;
     }
 
-    public void setTarget(Body target) {
-        this.target = target;
-    }
-
     public Body getClosestBoid() {
         Body closestBoid = null;
-        float closestDistance = 100;
+        float closestDistance = Float.MAX_VALUE;
 
-        for (Body b : getBoidsInSight()) {
+        for (Body b : allTrackingBodies) {
             float distance = PVector.dist(me.getPos(), b.getPos());
 
-            if (distance <= closestDistance) {
+            if (distance < closestDistance) {
                 closestDistance = distance;
                 closestBoid = b;
             }
@@ -101,19 +97,12 @@ public class Eye {
     // Método para obter a lista de "Boids" dentro do campo de visão
     public List<Body> getBoidsInSight() {
         List<Body> boidsInSight = new ArrayList<>();
-        /*
         for (Body b : nearSight) {
             if (inSight(b.getPos(), me.dna.visionSafeDistance, (float)Math.PI)) {
                 boidsInSight.add(b);
             }
         }
         for (Body b : farSight) {
-            if (inSight(b.getPos(), me.dna.visionDistance, me.dna.visionAngle)) {
-                boidsInSight.add(b);
-            }
-        }
-         */
-        for (Body b : allTrackingBodies) {
             if (inSight(b.getPos(), me.dna.visionDistance, me.dna.visionAngle)) {
                 boidsInSight.add(b);
             }
