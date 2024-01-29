@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Population {
 
-    protected List<Animal> allPreys, allPredators;
+    private List<Animal> allPreys, allPredators;
     private double[] window;
     private boolean mutate = true;
     private List<Body> allTrackingPreys;
@@ -43,8 +43,8 @@ public class Population {
             Animal predator = new Predator(pos, WorldConstants.PREY_MASS, WorldConstants.PREY_SIZE,
                     WorldConstants.PREDATOR_ART, parent, plt);
             predator.addBehavior(new Wander(1));
-            predator.addBehavior(new AvoidObstacle(1));
-            predator.addBehavior(new Seek(2));
+            //predator.addBehavior(new AvoidObstacle(0));
+            predator.addBehavior(new Pursuit(1));
             Eye eye = new Eye(predator, allTrackingPreys);
             predator.setEye(eye);
             allPredators.add(predator);
@@ -89,9 +89,6 @@ public class Population {
     private void die() {
         for(int i=allPreys.size()-1; i>=0; i--) {
             Animal prey = allPreys.get(i);
-            if (prey.kill) {
-                allPreys.remove(prey);
-            }
             if (prey.die()) {
                 allPreys.remove(prey);
             }

@@ -8,7 +8,6 @@ public class Body extends Mover{
     protected int color;
     protected float radius;
     protected String shape;
-    public boolean kill = false;
 
     // Construtor de um "Body"
     public Body(PVector pos, PVector acc, float mass, float radius, int color) {

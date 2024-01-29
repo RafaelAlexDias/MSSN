@@ -19,7 +19,7 @@ public class Eye {
     public Eye(Boid me, List<Body> allTrackingBodies) {
         this.me = me;
         this.allTrackingBodies = allTrackingBodies;
-        target = getClosestBoid();
+        target = allTrackingBodies.get(0);
     }
 
     public Eye(Boid me, Eye eye) {
@@ -37,30 +37,6 @@ public class Eye {
     public List<Body> getNearSight() {
         return nearSight;
     }
-
-    public List<Body> getAllTrackingBodies() {
-        return this.allTrackingBodies;
-    }
-
-    public void setAllTrackingBodies(List<Body> allTrackingBodies) {
-        this.allTrackingBodies = allTrackingBodies;
-    }
-
-    public Body getClosestBoid() {
-        Body closestBoid = null;
-        float closestDistance = Float.MAX_VALUE;
-
-        for (Body b : allTrackingBodies) {
-            float distance = PVector.dist(me.getPos(), b.getPos());
-
-            if (distance < closestDistance) {
-                closestDistance = distance;
-                closestBoid = b;
-            }
-        }
-        return closestBoid;
-    }
-
 
     // Método para "olhar" e determinar quais corpos estão na visão
     public void look() {
