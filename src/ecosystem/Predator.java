@@ -10,7 +10,7 @@ import java.util.List;
 public class Predator extends Animal {
     private PApplet parent;
     private SubPlot plt;
-    private float eatRange = 1f;
+    private float eatRange = 10f;
 
     public Predator(PVector pos, float mass, float radius, String shape, PApplet parent, SubPlot plt) {
         super(pos, mass, radius, shape, parent, plt);
@@ -29,12 +29,15 @@ public class Predator extends Animal {
     @Override
     public void eat(Terrain terrain) {
         Body boid = eye.getClosestBoid();
-        PVector boidPos = boid.getPos();
-        if (PVector.dist(this.pos, boidPos) < eatRange) {
-            this.energy += WorldConstants.ENERGY_FROM_PREY;
-            List<Body> preyList = this.eye.getAllTrackingBodies();
-            preyList.remove(boid);
-            this.eye.setAllTrackingBodies(preyList);
+        if (boid != null) {
+            PVector boidPos = boid.getPos();
+            if (PVector.dist(this.pos, boidPos) < eatRange) {
+                this.energy += WorldConstants.ENERGY_FROM_PREY;
+                List<Body> preyList = this.eye.getAllTrackingBodies();
+                preyList.remove(boid);
+                this.eye.setAllTrackingBodies(preyList);
+                boid.kill = true;
+            }
         }
     }
 

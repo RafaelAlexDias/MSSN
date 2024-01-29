@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Population {
 
-    private List<Animal> allPreys, allPredators;
+    protected List<Animal> allPreys, allPredators;
     private double[] window;
     private boolean mutate = true;
     private List<Body> allTrackingPreys;
@@ -89,6 +89,9 @@ public class Population {
     private void die() {
         for(int i=allPreys.size()-1; i>=0; i--) {
             Animal prey = allPreys.get(i);
+            if (prey.kill) {
+                allPreys.remove(prey);
+            }
             if (prey.die()) {
                 allPreys.remove(prey);
             }
@@ -102,6 +105,7 @@ public class Population {
     }
 
     private void reproduce(boolean mutate) {
+        /*
         for(int i=allPreys.size()-1; i>=0; i--) {
             Animal prey = allPreys.get(i);
             Animal child = prey.reproduce(mutate);
@@ -109,6 +113,8 @@ public class Population {
                 allPreys.add(child);
             }
         }
+
+         */
         for(int i=allPredators.size()-1; i>=0; i--) {
             Animal predator = allPredators.get(i);
             Animal child = predator.reproduce(mutate);
