@@ -38,6 +38,34 @@ public class Eye {
         return nearSight;
     }
 
+    public List<Body> getAllTrackingBodies() {
+        return this.allTrackingBodies;
+    }
+
+    public void setAllTrackingBodies(List<Body> allTrackingBodies) {
+        this.allTrackingBodies = allTrackingBodies;
+    }
+
+    public void setTarget(Body target) {
+        this.target = target;
+    }
+
+    public Body getClosestBoid() {
+        Body closestBoid = null;
+        float closestDistance = 100;
+
+        for (Body b : getBoidsInSight()) {
+            float distance = PVector.dist(me.getPos(), b.getPos());
+
+            if (distance <= closestDistance) {
+                closestDistance = distance;
+                closestBoid = b;
+            }
+        }
+        return closestBoid;
+    }
+
+
     // Método para "olhar" e determinar quais corpos estão na visão
     public void look() {
         farSight = new ArrayList<Body>();
@@ -73,12 +101,19 @@ public class Eye {
     // Método para obter a lista de "Boids" dentro do campo de visão
     public List<Body> getBoidsInSight() {
         List<Body> boidsInSight = new ArrayList<>();
+        /*
         for (Body b : nearSight) {
             if (inSight(b.getPos(), me.dna.visionSafeDistance, (float)Math.PI)) {
                 boidsInSight.add(b);
             }
         }
         for (Body b : farSight) {
+            if (inSight(b.getPos(), me.dna.visionDistance, me.dna.visionAngle)) {
+                boidsInSight.add(b);
+            }
+        }
+         */
+        for (Body b : allTrackingBodies) {
             if (inSight(b.getPos(), me.dna.visionDistance, me.dna.visionAngle)) {
                 boidsInSight.add(b);
             }

@@ -1,12 +1,16 @@
 package ecosystem;
 
+import physics.Body;
 import processing.core.PApplet;
 import processing.core.PVector;
 import tools.SubPlot;
 
+import java.util.List;
+
 public class Predator extends Animal {
     private PApplet parent;
     private SubPlot plt;
+    private float eatRange = 1f;
 
     public Predator(PVector pos, float mass, float radius, String shape, PApplet parent, SubPlot plt) {
         super(pos, mass, radius, shape, parent, plt);
@@ -24,12 +28,20 @@ public class Predator extends Animal {
 
     @Override
     public void eat(Terrain terrain) {
-        Patch patch = (Patch)terrain.world2Cell(pos.x, pos.y);
-        if (patch.getState() == WorldConstants.PatchType.FOOD.ordinal()) {
-            energy += WorldConstants.ENERGY_FROM_PLANT;
-            patch.setFertile();
+        Body boid = eye.getClosestBoid();
+        this.eye.setTarget(boid);
+
+        if (boid != null) { // Verifica se boid não é nulo
+            PVector boidPos = boid.getPos();
+            if (PVector.dist(this.pos, boidPos) < eatRange) {
+                this.energy += WorldConstants.ENERGY_FROM_PREY;
+                List<Body> preyList = this.eye.getAllTrackingBodies();
+                preyList.remove(boid);
+                this.eye.setAllTrackingBodies(preyList);
+            }
         }
     }
+
 
     @Override
     public Animal reproduce(boolean mutate) {

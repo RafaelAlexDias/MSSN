@@ -29,6 +29,7 @@ public class WorldConstants {
     public final static float INI_PREY_ENERGY = 10f;
     public final static float INI_PREDATOR_ENERGY = 15f;
     public final static float ENERGY_FROM_PLANT = 4f;
+    public final static float ENERGY_FROM_PREY = 10f;
     public final static float PREY_ENERGY_TO_REPRODUCE = 25f;
     public final static float PREDATOR_ENERGY_TO_REPRODUCE = 35f;
     public static String PREY_ART = "art\\Deer.svg";
