@@ -21,8 +21,8 @@ public class EcosystemApp implements IProcessingApp {
     private float intervalUpdate = 1;
     private boolean paused = false;
 
-    private float buttonWidth = 180;
-    private float buttonHeight = 90;
+    private float buttonWidth = 162;
+    private float buttonHeight = 64;
     private float buttonX, buttonY;
 
 
@@ -41,23 +41,23 @@ public class EcosystemApp implements IProcessingApp {
         timer = 0;
         updateGraphTime = timer + intervalUpdate;
 
-        buttonX = parent.width - buttonWidth - 70; // 20 pixels de margem
-        buttonY = parent.height - buttonHeight - 40; // 20 pixels de margem
+        buttonX = parent.width - buttonWidth - 65;
+        buttonY = parent.height - buttonHeight - 40;
     }
 
     @Override
     public void draw(PApplet parent, float dt) {
         parent.background(34, 79, 36);
+        parent.textSize(30);
 
         terrain.display(parent);
         population.display(parent, plt);
 
+        PImage PauseButton = parent.loadImage("art\\PauseButton.png");
+        parent.image(PauseButton, buttonX, buttonY - 70);
 
-        parent.fill(200);
-        parent.rect(buttonX, buttonY, buttonWidth, buttonHeight);
-        parent.fill(0);
-        parent.text("Reset", buttonX + 60, buttonY + 50);
-        parent.textSize(30);
+        PImage ResetButton = parent.loadImage("art\\ResetButton.png");
+        parent.image(ResetButton, buttonX, buttonY);
 
         PImage preyImage = parent.loadImage("art\\Deer.png");
         parent.image(preyImage, buttonX - 5, buttonY - buttonHeight - 120);
@@ -69,13 +69,22 @@ public class EcosystemApp implements IProcessingApp {
         parent.fill(0);
         parent.text(population.getNumPredator(), buttonX + 60, buttonY - buttonHeight - 55);
 
+        if (parent.mousePressed && parent.mouseX > buttonX && parent.mouseX < buttonX + buttonWidth &&
+                parent.mouseY > buttonY && parent.mouseY < buttonY + buttonHeight) {
+            setup(parent);
+        }
+        if (parent.mousePressed && parent.mouseX > buttonX && parent.mouseX < buttonX + buttonWidth &&
+                parent.mouseY > buttonY - 70 && parent.mouseY < buttonY - 70 + buttonHeight) {
+            paused = !paused;
+        }
+
         if(!paused) {
             timer += dt;
 
             terrain.regenerate();
             population.update(dt, terrain);
             population.update(dt, terrain);
-
+            /*
             if(timer > updateGraphTime) {
                 System.out.println(String.format("Time = %ds", (int)timer));
                 System.out.println("numPreys = " + population.getNumPreys());
@@ -85,14 +94,9 @@ public class EcosystemApp implements IProcessingApp {
                 System.out.println("meanWeightWander = " + population.getPreyMeanWeights()[0] +
                         " meanWeightAvoid = " + population.getPreyMeanWeights()[1]);
                 System.out.println("");
-
                 updateGraphTime = timer + intervalUpdate;
             }
-
-            if (parent.mousePressed && parent.mouseX > buttonX && parent.mouseX < buttonX + buttonWidth &&
-                    parent.mouseY > buttonY && parent.mouseY < buttonY + buttonHeight) {
-                setup(parent);
-            }
+             */
         }
 
     }

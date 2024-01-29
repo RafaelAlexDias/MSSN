@@ -1,0 +1,275 @@
+@startuml
+
+title __PHYSICS's Class Diagram__\n
+
+  namespace physics {
+    class physics.Air {
+        # Air()
+    }
+  }
+  
+
+  namespace physics {
+    class physics.Body {
+        # color : int
+        # radius : float
+        # shape : String
+        + Body()
+        + Body()
+        + Body()
+        + display()
+    }
+  }
+  
+
+  namespace physics {
+    class physics.ControlGUIApp {
+        - mass : float
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+    }
+  }
+  
+
+  namespace physics {
+    class physics.FallingBodyApp {
+        {static} + dimX : float
+        {static} + dimY : float
+        {static} - g : float
+        {static} - mass : float
+        {static} - radius : float
+        - speedUp : float
+        - timer : float
+        - viewport : float[]
+        - window : double[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+    }
+  }
+  
+
+  namespace physics {
+    abstract class physics.Fluid {
+        - density : float
+        + drag()
+        # Fluid()
+    }
+  }
+  
+
+  namespace physics {
+    class physics.MotionControl {
+        - vector : PVector
+        + MotionControl()
+        + display()
+        + setVector()
+    }
+  }
+  
+
+  namespace physics {
+    abstract class physics.Mover {
+        # acc : PVector
+        # mass : float
+        # pos : PVector
+        # vel : PVector
+        {static} - G : double
+        + applyForce()
+        + attraction()
+        + getPos()
+        + getVel()
+        + move()
+        + setPos()
+        + setVel()
+        # Mover()
+    }
+  }
+  
+
+  namespace physics {
+    class physics.PSControl {
+        - averageAngle : float
+        - color : int
+        - dispersionAngle : float
+        - flow : float
+        - maxLifetime : float
+        - maxRadius : float
+        - maxVelocity : float
+        - minLifetime : float
+        - minRadius : float
+        - minVelocity : float
+        + PSControl()
+        + getColor()
+        + getFlow()
+        {static} + getRnd()
+        + getRndLifetime()
+        + getRndRadius()
+        + getRndVel()
+        + setColor()
+        + setFlow()
+        + setLifetimeParams()
+        + setRadiusParams()
+        + setVelParams()
+    }
+  }
+  
+
+  namespace physics {
+    class physics.Particle {
+        - lifespan : float
+        - timer : float
+        + display()
+        + isDead()
+        + move()
+        # Particle()
+    }
+  }
+  
+
+  namespace physics {
+    class physics.ParticleSystem {
+        - particles : List<Particle>
+        + addParticles()
+        + display()
+        + getPSControl()
+        + move()
+        # ParticleSystem()
+        - addOneParticle()
+    }
+  }
+  
+
+  namespace physics {
+    class physics.ParticleSystemApp {
+        - flow : float
+        - lifetimeParams : float[]
+        - pss : List<ParticleSystem>
+        - radiusParams : float[]
+        - velParams : float[]
+        - viewport : float[]
+        - window : double[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+    }
+  }
+  
+
+  namespace physics {
+    class physics.RigidBody {
+        - acc : PVector
+        - mass : float
+        - pos : PVector
+        - vel : PVector
+        + RigidBody()
+        + applyForce()
+        + display()
+        + move()
+        + setPos()
+        + setVel()
+    }
+  }
+  
+
+  namespace physics {
+    enum ControlType {
+      FORCE
+      POSITION
+      VELOCITY
+    }
+  }
+  
+
+  namespace physics {
+    class physics.SolarSystemApp {
+        - bigWindow : float
+        - distEarthSun : float
+        - distancesToSun : float[]
+        - dt : float
+        - earthRadius : float
+        - flow : float
+        - lastTime : float
+        - lifetimeParams : float[]
+        - mediumWindow : float
+        - planetMass : float[]
+        - planetSize : float[]
+        - planetSpeed : float[]
+        - pss : List<ParticleSystem>
+        - radiusParams : float[]
+        - radiusSunSize : float
+        - smallWindow : float
+        - speedUp : float
+        - sunMass : float
+        - velParams : float[]
+        - viewport : float[]
+        - window : double[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+    }
+  }
+  
+
+  namespace physics {
+    class physics.Water {
+        - color : int
+        - waterHeight : float
+        + display()
+        + isInside()
+        # Water()
+    }
+  }
+  
+
+  physics.Air -up-|> physics.Fluid
+  physics.Body -up-|> physics.Mover
+  physics.ControlGUIApp .up.|> setup.IProcessingApp
+  physics.ControlGUIApp o-- physics.RigidBody.ControlType : ct
+  physics.ControlGUIApp o-- physics.MotionControl : mc
+  physics.ControlGUIApp o-- physics.RigidBody : rb
+  physics.FallingBodyApp .up.|> setup.IProcessingApp
+  physics.FallingBodyApp o-- physics.Air : air
+  physics.FallingBodyApp o-- physics.Body : ball
+  physics.FallingBodyApp o-- tools.SubPlot : plt
+  physics.FallingBodyApp o-- physics.Water : water
+  physics.MotionControl o-- physics.RigidBody.ControlType : ct
+  physics.MotionControl o-- physics.RigidBody : rb
+  physics.Particle -up-|> physics.Body
+  physics.ParticleSystem -up-|> physics.Body
+  physics.ParticleSystem o-- physics.PSControl : psc
+  physics.ParticleSystemApp .up.|> setup.IProcessingApp
+  physics.ParticleSystemApp o-- tools.SubPlot : plt
+  physics.RigidBody +-down- physics.RigidBody.ControlType
+  physics.SolarSystemApp .up.|> setup.IProcessingApp
+  physics.SolarSystemApp o-- physics.Body : earth
+  physics.SolarSystemApp o-- physics.Body : jupiter
+  physics.SolarSystemApp o-- physics.Body : mars
+  physics.SolarSystemApp o-- physics.Body : mercury
+  physics.SolarSystemApp o-- physics.Body : neptune
+  physics.SolarSystemApp o-- tools.SubPlot : plt
+  physics.SolarSystemApp o-- physics.PSControl : psc
+  physics.SolarSystemApp o-- physics.Body : saturn
+  physics.SolarSystemApp o-- physics.Body : sun
+  physics.SolarSystemApp o-- physics.Body : uranus
+  physics.SolarSystemApp o-- physics.Body : venus
+  physics.Water -up-|> physics.Fluid
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

@@ -1,8 +1,6 @@
 package setup;
 
 import ecosystem.EcosystemApp;
-import ecosystem.TestEcosystemApp;
-import fractals.LSystemApp;
 import processing.core.PApplet;
 
 public class ProcessingSetup extends PApplet{

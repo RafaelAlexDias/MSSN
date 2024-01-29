@@ -1,0 +1,368 @@
+@startuml
+
+title __AA's Class Diagram__\n
+
+  namespace aa {
+    class aa.Align {
+        + Align()
+        + getDesiredVelocity()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Arrive {
+        + Arrive()
+        + getDesiredVelocity()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.AvoidObstacle {
+        + AvoidObstacle()
+        + getDesiredVelocity()
+        - hasObstacle()
+    }
+  }
+  
+
+  namespace aa {
+    abstract class aa.Behavior {
+        # weight : float
+        + Behavior()
+        + getDesiredVelocity()
+        + getWeight()
+        + setWeight()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Boid {
+        # behaviors : List<Behavior>
+        # phiWander : float
+        # shape : PShape
+        # shapeString : String
+        - sumWeights : float
+        - window : double[]
+        + addBehavior()
+        + applyBehavior()
+        + applyBehaviors()
+        + decreaseSpeed()
+        + display()
+        + distanceToTarget()
+        + getBehaviors()
+        + getDNA()
+        + getEye()
+        + getRadius()
+        + increaseSpeed()
+        + mutateBehaviors()
+        + removeBehavior()
+        + setEye()
+        + setShape()
+        + setShape()
+        # Boid()
+        # Boid()
+        - move()
+        - updateSumWeights()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.BoidAceleradorTravaoApp {
+        - allTrackingBodies : List<Body>
+        - viewport : float[]
+        - window : double[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.BoidApp {
+        - allTrackingBodies : List<Body>
+        - index : int
+        - viewport : float[]
+        - window : double[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.BoidWanderSeekApp {
+        - allTrackingBodies : List<Body>
+        - minBoidTargetDistance : float
+        - viewport : float[]
+        - window : double[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Brake {
+        + Brake()
+        + getDesiredVelocity()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Cohesion {
+        + Cohesion()
+        + getDesiredVelocity()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.DNA {
+        + deltaPhiWander : float
+        + deltaTPursuit : float
+        + deltaTWander : float
+        + maxForce : float
+        + maxSpeed : float
+        + radiusArrive : float
+        + radiusWander : float
+        + visionAngle : float
+        + visionDistance : float
+        + visionSafeDistance : float
+        + DNA()
+        + DNA()
+        {static} + random()
+        - mutate()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.DebuggingApp {
+        - sacWeights : float[]
+        - view : float[]
+        - window : double[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Evade {
+        + Evade()
+        + getDesiredVelocity()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Eye {
+        - allTrackingBodies : List<Body>
+        - farSight : List<Body>
+        - nearSight : List<Body>
+        + Eye()
+        + Eye()
+        + display()
+        + getBoidsInSight()
+        + getFarSight()
+        + getNearSight()
+        + inSight()
+        + look()
+        - farSight()
+        - nearSight()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Flee {
+        + Flee()
+        + getDesiredVelocity()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Flock {
+        - boids : List<Boid>
+        - nboids : int
+        + Flock()
+        + applyBehavior()
+        + display()
+        + getBoid()
+        + getBoids()
+        + getNBoids()
+        - boidList2BodyList()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.FlockPredatorApp {
+        - allTrackingBodies : List<Body>
+        - distanceToTarget : float
+        - minBoidTargetDistance : float
+        - sacWeights : float[]
+        - viewport : float[]
+        - window : double[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.FlockWASDApp {
+        - numBoidControl : int
+        - sacWeights : float[]
+        - velocity : float
+        - viewport : float[]
+        - window : double[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+    }
+  }
+  
+
+  namespace aa {
+    interface aa.IBehavior {
+        {abstract} + getDesiredVelocity()
+        {abstract} + getWeight()
+        {abstract} + setWeight()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Pursuit {
+        + Pursuit()
+        + getDesiredVelocity()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.ReynoldsTestApp {
+        - ix : int
+        - sacWeights : float[]
+        - view1 : float[]
+        - view2 : float[]
+        - view3 : float[]
+        - window : double[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Seek {
+        + Seek()
+        + getDesiredVelocity()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Separate {
+        + Separate()
+        + getDesiredVelocity()
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Wander {
+        + Wander()
+        + getDesiredVelocity()
+    }
+  }
+  
+
+  aa.Align -up-|> aa.Behavior
+  aa.Arrive -up-|> aa.Behavior
+  aa.AvoidObstacle -up-|> aa.Behavior
+  aa.Boid -up-|> physics.Body
+  aa.Boid o-- aa.DNA : dna
+  aa.Boid o-- aa.Eye : eye
+  aa.Boid o-- tools.SubPlot : plt
+  aa.BoidAceleradorTravaoApp .up.|> setup.IProcessingApp
+  aa.BoidAceleradorTravaoApp o-- aa.Boid : b
+  aa.BoidAceleradorTravaoApp o-- tools.SubPlot : plt
+  aa.BoidAceleradorTravaoApp o-- physics.Body : target
+  aa.BoidApp .up.|> setup.IProcessingApp
+  aa.BoidApp o-- aa.Boid : b
+  aa.BoidApp o-- tools.SubPlot : plt
+  aa.BoidApp o-- physics.Body : target
+  aa.BoidWanderSeekApp .up.|> setup.IProcessingApp
+  aa.BoidWanderSeekApp o-- aa.Boid : b
+  aa.BoidWanderSeekApp o-- tools.SubPlot : plt
+  aa.BoidWanderSeekApp o-- physics.Body : target
+  aa.Brake -up-|> aa.Behavior
+  aa.Cohesion -up-|> aa.Behavior
+  aa.DebuggingApp .up.|> setup.IProcessingApp
+  aa.DebuggingApp o-- aa.Boid : boid
+  aa.DebuggingApp o-- aa.Flock : flock
+  aa.DebuggingApp o-- tools.SubPlot : plt
+  aa.Evade -up-|> aa.Behavior
+  aa.Eye o-- physics.Body : target
+  aa.Eye o-- aa.Boid : me
+  aa.Flee -up-|> aa.Behavior
+  aa.FlockPredatorApp .up.|> setup.IProcessingApp
+  aa.FlockPredatorApp o-- aa.Flock : flock
+  aa.FlockPredatorApp o-- tools.SubPlot : plt
+  aa.FlockPredatorApp o-- aa.Boid : predator
+  aa.FlockWASDApp .up.|> setup.IProcessingApp
+  aa.FlockWASDApp o-- aa.Boid : boidControl
+  aa.FlockWASDApp o-- aa.Flock : flock
+  aa.FlockWASDApp o-- tools.SubPlot : plt
+  aa.Pursuit -up-|> aa.Behavior
+  aa.ReynoldsTestApp .up.|> setup.IProcessingApp
+  aa.ReynoldsTestApp o-- aa.Boid : boid
+  aa.ReynoldsTestApp o-- aa.Flock : flock
+  aa.ReynoldsTestApp o-- tools.SubPlot : plt1
+  aa.ReynoldsTestApp o-- tools.SubPlot : plt2
+  aa.ReynoldsTestApp o-- tools.SubPlot : plt3
+  aa.ReynoldsTestApp o-- aa.Boid : pursuiter
+  aa.ReynoldsTestApp o-- aa.Boid : seeker
+  aa.ReynoldsTestApp o-- physics.Body : target
+  aa.ReynoldsTestApp o-- aa.Boid : wander
+  aa.Seek -up-|> aa.Behavior
+  aa.Separate -up-|> aa.Behavior
+  aa.Wander -up-|> aa.Behavior
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

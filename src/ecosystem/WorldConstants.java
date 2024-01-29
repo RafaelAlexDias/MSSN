@@ -24,7 +24,7 @@ public class WorldConstants {
     // Prey Population
     public final static float PREY_SIZE = 0.2f;
     public final static float PREY_MASS = 1f;
-    public final static int INI_PREY_POPULATION = 1;
+    public final static int INI_PREY_POPULATION = 5;
     public final static int INI_PREDATOR_POPULATION = 1;
     public final static float INI_PREY_ENERGY = 10f;
     public final static float INI_PREDATOR_ENERGY = 15f;

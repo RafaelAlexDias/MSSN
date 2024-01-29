@@ -1,0 +1,211 @@
+@startuml
+
+title __ECOSYSTEM's Class Diagram__\n
+
+  namespace ecosystem {
+    abstract class ecosystem.Animal {
+        # energy : float
+        + die()
+        + energy_consumption()
+        # Animal()
+        # Animal()
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.EcosystemApp {
+        - buttonHeight : float
+        - buttonWidth : float
+        - buttonX : float
+        - buttonY : float
+        - intervalUpdate : float
+        - paused : boolean
+        - refMeanMaxSpeed : float
+        - refPopulation : float
+        - refStdMaxSpeed : float
+        - timeDuration : float
+        - timer : float
+        - updateGraphTime : float
+        - viewport : float[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+        - getTerrainArt()
+    }
+  }
+  
+
+  namespace ecosystem {
+    interface ecosystem.IAnimal {
+        {abstract} + die()
+        {abstract} + eat()
+        {abstract} + energy_consumption()
+        {abstract} + reproduce()
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.Patch {
+        - eatenTime : long
+        - timeToGrow : int
+        + Patch()
+        + regenerate()
+        + setFertile()
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.Population {
+        - allPredators : List<Animal>
+        - allPreys : List<Animal>
+        - allTrackingPreys : List<Body>
+        - mutate : boolean
+        - window : double[]
+        + Population()
+        + display()
+        + getNumPredator()
+        + getNumPreys()
+        + getPreyMeanMaxSpeed()
+        + getPreyMeanWeights()
+        + getPreyStdMaxSpeed()
+        + update()
+        - die()
+        - eat()
+        - energy_consumption()
+        - move()
+        - reproduce()
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.Predator {
+        - parent : PApplet
+        + Predator()
+        + Predator()
+        + eat()
+        + reproduce()
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.Prey {
+        - parent : PApplet
+        + Prey()
+        + Prey()
+        + eat()
+        + reproduce()
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.Terrain {
+        + Terrain()
+        + getObstacles()
+        + regenerate()
+        # createCells()
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.TestEcosystemApp {
+        - intervalUpdate : float
+        - refMeanMaxSpeed : float
+        - refPopulation : float
+        - refStdMaxSpeed : float
+        - timeDuration : float
+        - timer : float
+        - updateGraphTime : float
+        - viewGraph1 : float[]
+        - viewGraph2 : float[]
+        - viewGraph3 : float[]
+        - viewport : float[]
+        - winGraph1 : double[]
+        - winGraph2 : double[]
+        - winGraph3 : double[]
+        + draw()
+        + keyPressed()
+        + mouseDragged()
+        + mousePressed()
+        + setup()
+        - getTerrainArt()
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.WorldConstants {
+        {static} + ENERGY_FROM_PLANT : float
+        {static} + INI_PREDATOR_ENERGY : float
+        {static} + INI_PREDATOR_POPULATION : int
+        {static} + INI_PREY_ENERGY : float
+        {static} + INI_PREY_POPULATION : int
+        {static} + NCOLS : int
+        {static} + NROWS : int
+        {static} + NSTATES : int
+        {static} + PATCH_TYPE_PROB : double[]
+        {static} + PREDATOR_ART : String
+        {static} + PREDATOR_ENERGY_TO_REPRODUCE : float
+        {static} + PREY_ART : String
+        {static} + PREY_ENERGY_TO_REPRODUCE : float
+        {static} + PREY_MASS : float
+        {static} + PREY_SIZE : float
+        {static} + REGENERATION_TIME : float[]
+        {static} + TERRAIN_ART : String[]
+        {static} + TERRAIN_COLORS : int[][]
+        {static} + WINDOW : double[]
+    }
+  }
+  
+
+  namespace ecosystem {
+    enum PatchType {
+      EMPTY
+      FERTILE
+      FOOD
+      OBSTACLE
+    }
+  }
+  
+
+  ecosystem.Animal .up.|> ecosystem.IAnimal
+  ecosystem.Animal -up-|> aa.Boid
+  ecosystem.EcosystemApp .up.|> setup.IProcessingApp
+  ecosystem.EcosystemApp o-- tools.SubPlot : plt
+  ecosystem.EcosystemApp o-- ecosystem.Population : population
+  ecosystem.EcosystemApp o-- ecosystem.Terrain : terrain
+  ecosystem.Patch -up-|> ac.MajorityCell
+  ecosystem.Predator -up-|> ecosystem.Animal
+  ecosystem.Predator o-- tools.SubPlot : plt
+  ecosystem.Prey -up-|> ecosystem.Animal
+  ecosystem.Prey o-- tools.SubPlot : plt
+  ecosystem.Terrain -up-|> ac.MajorityCA
+  ecosystem.TestEcosystemApp .up.|> setup.IProcessingApp
+  ecosystem.TestEcosystemApp o-- tools.SubPlot : plt
+  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph1
+  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph2
+  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph3
+  ecosystem.TestEcosystemApp o-- ecosystem.Population : population
+  ecosystem.TestEcosystemApp o-- ecosystem.Terrain : terrain
+  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg1
+  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg2
+  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg3
+  ecosystem.WorldConstants +-down- ecosystem.WorldConstants.PatchType
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

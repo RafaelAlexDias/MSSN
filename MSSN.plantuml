@@ -1,0 +1,689 @@
+@startuml
+
+title __MSSN's Class Diagram__\n
+
+  namespace Sketch_TP0 {
+    class Sketch_TP0.SketchCartoon {
+    }
+  }
+  
+
+  namespace Sketch_TP0 {
+    class Sketch_TP0.SketchLogo {
+    }
+  }
+  
+
+  namespace Sketch_TP0 {
+    class Sketch_TP0.SketchLogoComEasing {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Align {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Arrive {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.AvoidObstacle {
+    }
+  }
+  
+
+  namespace aa {
+    abstract class aa.Behavior {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Boid {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.BoidAceleradorTravaoApp {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.BoidApp {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.BoidWanderSeekApp {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Brake {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Cohesion {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.DNA {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.DebuggingApp {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Evade {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Eye {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Flee {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Flock {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.FlockPredatorApp {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.FlockWASDApp {
+    }
+  }
+  
+
+  namespace aa {
+    interface aa.IBehavior {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Pursuit {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.ReynoldsTestApp {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Seek {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Separate {
+    }
+  }
+  
+
+  namespace aa {
+    class aa.Wander {
+    }
+  }
+  
+
+  namespace ac {
+    class ac.ACElementar {
+    }
+  }
+  
+
+  namespace ac {
+    class ac.Cell {
+    }
+  }
+  
+
+  namespace ac {
+    class ac.CellularAutomata {
+    }
+  }
+  
+
+  namespace ac {
+    class ac.GOL {
+    }
+  }
+  
+
+  namespace ac {
+    class ac.MajorityCA {
+    }
+  }
+  
+
+  namespace ac {
+    class ac.MajorityCell {
+    }
+  }
+  
+
+  namespace ac {
+    class ac.SketchACElementar {
+    }
+  }
+  
+
+  namespace ac {
+    class ac.SketchGOL {
+    }
+  }
+  
+
+  namespace ac {
+    class ac.TestCA {
+    }
+  }
+  
+
+  namespace ac {
+    class ac.TestMajorityCA {
+    }
+  }
+  
+
+  namespace chaos_game {
+    class chaos_game.ChaosGame {
+    }
+  }
+  
+
+  namespace chaos_game {
+    class chaos_game.Pentagon_ChaosGame {
+    }
+  }
+  
+
+  namespace chaos_game {
+    class chaos_game.XSides_ChaosGame {
+    }
+  }
+  
+
+  namespace dla {
+    class dla.DLA {
+    }
+  }
+  
+
+  namespace dla {
+    interface dla.IProcessingApp {
+    }
+  }
+  
+
+  namespace dla {
+    class dla.Walker {
+    }
+  }
+  
+
+  namespace ecosystem {
+    abstract class ecosystem.Animal {
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.EcosystemApp {
+    }
+  }
+  
+
+  namespace ecosystem {
+    interface ecosystem.IAnimal {
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.Patch {
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.Population {
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.Predator {
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.Prey {
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.Terrain {
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.TestEcosystemApp {
+    }
+  }
+  
+
+  namespace ecosystem {
+    class ecosystem.WorldConstants {
+    }
+  }
+  
+
+  namespace fractals {
+    class fractals.ForestApp {
+    }
+  }
+  
+
+  namespace fractals {
+    class fractals.FruitTreeApp {
+    }
+  }
+  
+
+  namespace fractals {
+    class fractals.LSystem {
+    }
+  }
+  
+
+  namespace fractals {
+    class fractals.LSystemApp {
+    }
+  }
+  
+
+  namespace fractals {
+    namespace Mandelbrot {
+      interface fractals.Mandelbrot.IProcessingApp {
+      }
+    }
+  }
+  
+
+  namespace fractals {
+    namespace Mandelbrot {
+      class fractals.Mandelbrot.MandelbrotApp {
+      }
+    }
+  }
+  
+
+  namespace fractals {
+    namespace Mandelbrot {
+      class fractals.Mandelbrot.MandelbrotSet {
+      }
+    }
+  }
+  
+
+  namespace fractals {
+    namespace Mandelbrot {
+      class fractals.Mandelbrot.ProcessingSetup {
+      }
+    }
+  }
+  
+
+  namespace fractals {
+    class fractals.Rule {
+    }
+  }
+  
+
+  namespace fractals {
+    class fractals.Tree {
+    }
+  }
+  
+
+  namespace fractals {
+    class fractals.Turtle {
+    }
+  }
+  
+
+  namespace fractals {
+    class fractals.TurtleFruit {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.Air {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.Body {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.ControlGUIApp {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.FallingBodyApp {
+    }
+  }
+  
+
+  namespace physics {
+    abstract class physics.Fluid {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.MotionControl {
+    }
+  }
+  
+
+  namespace physics {
+    abstract class physics.Mover {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.PSControl {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.Particle {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.ParticleSystem {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.ParticleSystemApp {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.RigidBody {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.SolarSystemApp {
+    }
+  }
+  
+
+  namespace physics {
+    class physics.Water {
+    }
+  }
+  
+
+  namespace setup {
+    interface setup.IProcessingApp {
+    }
+  }
+  
+
+  namespace setup {
+    class setup.ProcessingSetup {
+    }
+  }
+  
+
+  namespace tools {
+    class tools.Complex {
+    }
+  }
+  
+
+  namespace tools {
+    class tools.CustomRandomGenerator {
+    }
+  }
+  
+
+  namespace tools {
+    class tools.Histogram {
+    }
+  }
+  
+
+  namespace tools {
+    class tools.SubPlot {
+    }
+  }
+  
+
+  namespace tools {
+    class tools.TestHistogram {
+    }
+  }
+  
+
+  namespace tools {
+    class tools.TimeGraph {
+    }
+  }
+  
+
+  Sketch_TP0.SketchCartoon .up.|> setup.IProcessingApp
+  Sketch_TP0.SketchLogo .up.|> setup.IProcessingApp
+  Sketch_TP0.SketchLogoComEasing .up.|> setup.IProcessingApp
+  aa.Align -up-|> aa.Behavior
+  aa.Arrive -up-|> aa.Behavior
+  aa.AvoidObstacle -up-|> aa.Behavior
+  aa.Boid -up-|> physics.Body
+  aa.Boid o-- aa.DNA : dna
+  aa.Boid o-- aa.Eye : eye
+  aa.Boid o-- tools.SubPlot : plt
+  aa.BoidAceleradorTravaoApp .up.|> setup.IProcessingApp
+  aa.BoidAceleradorTravaoApp o-- aa.Boid : b
+  aa.BoidAceleradorTravaoApp o-- tools.SubPlot : plt
+  aa.BoidAceleradorTravaoApp o-- physics.Body : target
+  aa.BoidApp .up.|> setup.IProcessingApp
+  aa.BoidApp o-- aa.Boid : b
+  aa.BoidApp o-- tools.SubPlot : plt
+  aa.BoidApp o-- physics.Body : target
+  aa.BoidWanderSeekApp .up.|> setup.IProcessingApp
+  aa.BoidWanderSeekApp o-- aa.Boid : b
+  aa.BoidWanderSeekApp o-- tools.SubPlot : plt
+  aa.BoidWanderSeekApp o-- physics.Body : target
+  aa.Brake -up-|> aa.Behavior
+  aa.Cohesion -up-|> aa.Behavior
+  aa.DebuggingApp .up.|> setup.IProcessingApp
+  aa.DebuggingApp o-- aa.Boid : boid
+  aa.DebuggingApp o-- aa.Flock : flock
+  aa.DebuggingApp o-- tools.SubPlot : plt
+  aa.Evade -up-|> aa.Behavior
+  aa.Eye o-- physics.Body : target
+  aa.Eye o-- aa.Boid : me
+  aa.Flee -up-|> aa.Behavior
+  aa.FlockPredatorApp .up.|> setup.IProcessingApp
+  aa.FlockPredatorApp o-- aa.Flock : flock
+  aa.FlockPredatorApp o-- tools.SubPlot : plt
+  aa.FlockPredatorApp o-- aa.Boid : predator
+  aa.FlockWASDApp .up.|> setup.IProcessingApp
+  aa.FlockWASDApp o-- aa.Boid : boidControl
+  aa.FlockWASDApp o-- aa.Flock : flock
+  aa.FlockWASDApp o-- tools.SubPlot : plt
+  aa.Pursuit -up-|> aa.Behavior
+  aa.ReynoldsTestApp .up.|> setup.IProcessingApp
+  aa.ReynoldsTestApp o-- aa.Boid : boid
+  aa.ReynoldsTestApp o-- aa.Flock : flock
+  aa.ReynoldsTestApp o-- tools.SubPlot : plt1
+  aa.ReynoldsTestApp o-- tools.SubPlot : plt2
+  aa.ReynoldsTestApp o-- tools.SubPlot : plt3
+  aa.ReynoldsTestApp o-- aa.Boid : pursuiter
+  aa.ReynoldsTestApp o-- aa.Boid : seeker
+  aa.ReynoldsTestApp o-- physics.Body : target
+  aa.ReynoldsTestApp o-- aa.Boid : wander
+  aa.Seek -up-|> aa.Behavior
+  aa.Separate -up-|> aa.Behavior
+  aa.Wander -up-|> aa.Behavior
+  ac.Cell o-- ac.CellularAutomata : ca
+  ac.CellularAutomata o-- tools.SubPlot : plt
+  ac.MajorityCA -up-|> ac.CellularAutomata
+  ac.MajorityCell -up-|> ac.Cell
+  ac.MajorityCell o-- tools.Histogram : hist
+  ac.SketchACElementar .up.|> setup.IProcessingApp
+  ac.SketchACElementar o-- ac.ACElementar : ac
+  ac.SketchGOL .up.|> setup.IProcessingApp
+  ac.SketchGOL o-- ac.GOL : gol
+  ac.TestCA .up.|> setup.IProcessingApp
+  ac.TestCA o-- ac.CellularAutomata : ca
+  ac.TestCA o-- tools.SubPlot : plt
+  ac.TestMajorityCA .up.|> setup.IProcessingApp
+  ac.TestMajorityCA o-- ac.MajorityCA : ca
+  ac.TestMajorityCA o-- tools.SubPlot : plt
+  chaos_game.ChaosGame .up.|> setup.IProcessingApp
+  chaos_game.Pentagon_ChaosGame .up.|> setup.IProcessingApp
+  chaos_game.XSides_ChaosGame .up.|> setup.IProcessingApp
+  dla.DLA .up.|> setup.IProcessingApp
+  dla.Walker o-- dla.Walker.State : state
+  ecosystem.Animal .up.|> ecosystem.IAnimal
+  ecosystem.Animal -up-|> aa.Boid
+  ecosystem.EcosystemApp .up.|> setup.IProcessingApp
+  ecosystem.EcosystemApp o-- tools.SubPlot : plt
+  ecosystem.EcosystemApp o-- ecosystem.Population : population
+  ecosystem.EcosystemApp o-- ecosystem.Terrain : terrain
+  ecosystem.Patch -up-|> ac.MajorityCell
+  ecosystem.Predator -up-|> ecosystem.Animal
+  ecosystem.Predator o-- tools.SubPlot : plt
+  ecosystem.Prey -up-|> ecosystem.Animal
+  ecosystem.Prey o-- tools.SubPlot : plt
+  ecosystem.Terrain -up-|> ac.MajorityCA
+  ecosystem.TestEcosystemApp .up.|> setup.IProcessingApp
+  ecosystem.TestEcosystemApp o-- tools.SubPlot : plt
+  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph1
+  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph2
+  ecosystem.TestEcosystemApp o-- tools.SubPlot : pltGraph3
+  ecosystem.TestEcosystemApp o-- ecosystem.Population : population
+  ecosystem.TestEcosystemApp o-- ecosystem.Terrain : terrain
+  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg1
+  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg2
+  ecosystem.TestEcosystemApp o-- tools.TimeGraph : tg3
+  fractals.ForestApp .up.|> fractals.Mandelbrot.IProcessingApp
+  fractals.ForestApp o-- tools.SubPlot : plt
+  fractals.FruitTreeApp .up.|> setup.IProcessingApp
+  fractals.FruitTreeApp o-- fractals.LSystem : lsys
+  fractals.FruitTreeApp o-- tools.SubPlot : plt
+  fractals.FruitTreeApp o-- fractals.Turtle : turtle
+  fractals.LSystemApp .up.|> setup.IProcessingApp
+  fractals.LSystemApp o-- fractals.LSystem : lsys
+  fractals.LSystemApp o-- tools.SubPlot : plt
+  fractals.LSystemApp o-- fractals.Turtle : turtle
+  fractals.Mandelbrot.MandelbrotApp .up.|> fractals.Mandelbrot.IProcessingApp
+  fractals.Mandelbrot.MandelbrotApp o-- fractals.Mandelbrot.MandelbrotSet : ms
+  fractals.Mandelbrot.MandelbrotApp o-- tools.SubPlot : plt
+  fractals.Mandelbrot.ProcessingSetup -up-|> processing.core.PApplet
+  fractals.Tree o-- fractals.LSystem : lsys
+  fractals.Tree o-- fractals.Turtle : turtle
+  physics.Air -up-|> physics.Fluid
+  physics.Body -up-|> physics.Mover
+  physics.ControlGUIApp .up.|> setup.IProcessingApp
+  physics.ControlGUIApp o-- physics.RigidBody.ControlType : ct
+  physics.ControlGUIApp o-- physics.MotionControl : mc
+  physics.ControlGUIApp o-- physics.RigidBody : rb
+  physics.FallingBodyApp .up.|> setup.IProcessingApp
+  physics.FallingBodyApp o-- physics.Air : air
+  physics.FallingBodyApp o-- physics.Body : ball
+  physics.FallingBodyApp o-- tools.SubPlot : plt
+  physics.FallingBodyApp o-- physics.Water : water
+  physics.MotionControl o-- physics.RigidBody.ControlType : ct
+  physics.MotionControl o-- physics.RigidBody : rb
+  physics.Particle -up-|> physics.Body
+  physics.ParticleSystem -up-|> physics.Body
+  physics.ParticleSystem o-- physics.PSControl : psc
+  physics.ParticleSystemApp .up.|> setup.IProcessingApp
+  physics.ParticleSystemApp o-- tools.SubPlot : plt
+  physics.SolarSystemApp .up.|> setup.IProcessingApp
+  physics.SolarSystemApp o-- physics.Body : earth
+  physics.SolarSystemApp o-- physics.Body : jupiter
+  physics.SolarSystemApp o-- physics.Body : mars
+  physics.SolarSystemApp o-- physics.Body : mercury
+  physics.SolarSystemApp o-- physics.Body : neptune
+  physics.SolarSystemApp o-- tools.SubPlot : plt
+  physics.SolarSystemApp o-- physics.PSControl : psc
+  physics.SolarSystemApp o-- physics.Body : saturn
+  physics.SolarSystemApp o-- physics.Body : sun
+  physics.SolarSystemApp o-- physics.Body : uranus
+  physics.SolarSystemApp o-- physics.Body : venus
+  physics.Water -up-|> physics.Fluid
+  setup.ProcessingSetup -up-|> processing.core.PApplet
+  tools.TimeGraph o-- tools.SubPlot : plt
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

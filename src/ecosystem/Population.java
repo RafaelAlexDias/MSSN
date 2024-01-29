@@ -28,7 +28,7 @@ public class Population {
                     parent.random((float)window[2], (float)window[3]));
             Animal prey = new Prey(pos, WorldConstants.PREY_MASS, WorldConstants.PREY_SIZE,
                     WorldConstants.PREY_ART, parent, plt);
-            prey.addBehavior(new Wander(1));
+            prey.addBehavior(new Wander(2));
             prey.addBehavior(new AvoidObstacle(0));
             Eye eye = new Eye(prey, obstacles);
             allTrackingPreys = new ArrayList<Body>();
