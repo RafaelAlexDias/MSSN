@@ -53,8 +53,11 @@ public class EcosystemApp implements IProcessingApp {
         terrain.display(parent);
         population.display(parent, plt);
 
-        PImage PauseButton = parent.loadImage("art\\PauseButton.png");
-        parent.image(PauseButton, buttonX, buttonY - 70);
+        PImage Title = parent.loadImage("art\\Title.png");
+        parent.image(Title, buttonX-25, 30);
+
+        PImage Pause = parent.loadImage("art\\ParaPausar.png");
+        parent.image(Pause, buttonX-10, 170);
 
         PImage ResetButton = parent.loadImage("art\\ResetButton.png");
         parent.image(ResetButton, buttonX, buttonY);
@@ -72,10 +75,6 @@ public class EcosystemApp implements IProcessingApp {
         if (parent.mousePressed && parent.mouseX > buttonX && parent.mouseX < buttonX + buttonWidth &&
                 parent.mouseY > buttonY && parent.mouseY < buttonY + buttonHeight) {
             setup(parent);
-        }
-        if (parent.mousePressed && parent.mouseX > buttonX && parent.mouseX < buttonX + buttonWidth &&
-                parent.mouseY > buttonY - 70 && parent.mouseY < buttonY - 70 + buttonHeight) {
-            paused = !paused;
         }
 
         if(!paused) {
