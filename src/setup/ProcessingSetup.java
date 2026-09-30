@@ -8,10 +8,7 @@ public class ProcessingSetup extends PApplet{
     private float lastUpdateTime;
     @Override
     public void settings(){
-        // Para o EcosystemApp
-        size(1028, 720);
-        // Para tudo o resto:
-        // size(800, 700);
+        size(800, 700);
     }
     @Override
     public void setup(){

@@ -9,15 +9,15 @@ public class EcosystemApp implements IProcessingApp {
     private float[] viewport = {0f, 0f, 0.7f, 1f};
 
     private SubPlot plt;
-
+    private boolean start;
     private Terrain terrain;
     private Population population;
-    private float timer;
     private boolean paused = false;
 
     private float buttonWidth = 162;
     private float buttonHeight = 64;
     private float buttonX, buttonY;
+    private Animal target;
 
 
     @Override
@@ -32,7 +32,6 @@ public class EcosystemApp implements IProcessingApp {
         }
         population = new Population(parent, plt, terrain);
 
-        timer = 0;
 
         buttonX = parent.width - buttonWidth - 65;
         buttonY = parent.height - buttonHeight - 40;
@@ -40,44 +39,74 @@ public class EcosystemApp implements IProcessingApp {
 
     @Override
     public void draw(PApplet parent, float dt) {
-        parent.background(34, 79, 36);
-        parent.textSize(30);
+        if (!start) {
+            // Menu inicial
+            parent.background(34, 79, 36);
+            parent.textAlign(PApplet.CENTER);
 
-        terrain.display(parent);
-        population.display(parent, plt);
+            // Título
+            PImage Title = parent.loadImage("art\\Title.png");
+            parent.image(Title, parent.width / 2 - 100, 50, 200, 100);
 
-        PImage Title = parent.loadImage("art\\Title.png");
-        parent.image(Title, buttonX-25, 30);
+            // Texto de introdução
+            parent.fill(255);
+            parent.textSize(18);
+            parent.text("Bem-vindo à simulação de um ecossistema\n\n" +
+                            "Nesta simulação, foi recriado um ecossistema simples\n" +
+                            "com presas e predadores.\n\n" +
+                            "Teclas:\n'A' para adicionar presas\n'P' para adicionar predadores\n" +
+                            "'espaço' para pausar",
+                    parent.width / 2, parent.height / 2);
 
-        PImage Pause = parent.loadImage("art\\ParaPausar.png");
-        parent.image(Pause, buttonX-10, 170);
+            // Instrução para começar
+            parent.textSize(20);
+            parent.fill(200, 50, 50);
+            parent.text("Clique para iniciar", parent.width / 2, parent.height - 100);
 
-        PImage ResetButton = parent.loadImage("art\\ResetButton.png");
-        parent.image(ResetButton, buttonX, buttonY);
+            // Verifica clique do mouse para iniciar
+            if (parent.mousePressed) {
+                start = true;
+            }
+        } else {
+            // Simulação em andamento
+            parent.background(34, 79, 36);
 
-        PImage preyImage = parent.loadImage("art\\Deer.png");
-        parent.image(preyImage, buttonX - 5, buttonY - buttonHeight - 120);
-        PImage predatorImage = parent.loadImage("art\\Wolf.png");
-        parent.image(predatorImage, buttonX + 55, buttonY - buttonHeight - 120);
+            parent.textSize(30);
 
-        parent.fill(0);
-        parent.text(population.getNumPreys(), buttonX, buttonY - buttonHeight - 55);
-        parent.fill(0);
-        parent.text(population.getNumPredator(), buttonX + 60, buttonY - buttonHeight - 55);
+            terrain.display(parent);
+            population.display(parent, plt);
 
-        if (parent.mousePressed && parent.mouseX > buttonX && parent.mouseX < buttonX + buttonWidth &&
-                parent.mouseY > buttonY && parent.mouseY < buttonY + buttonHeight) {
-            setup(parent);
+            PImage Title = parent.loadImage("art\\Title.png");
+            parent.image(Title, buttonX, 30);
+
+            PImage Pause = parent.loadImage("art\\ParaPausar.png");
+            parent.image(Pause, buttonX + 15, 170);
+
+            PImage ResetButton = parent.loadImage("art\\ResetButton.png");
+            parent.image(ResetButton, buttonX + 25, buttonY);
+
+            PImage preyImage = parent.loadImage("art\\Deer.png");
+            parent.image(preyImage, buttonX + 20, buttonY - buttonHeight - 120);
+            PImage predatorImage = parent.loadImage("art\\Wolf.png");
+            parent.image(predatorImage, buttonX + 80, buttonY - buttonHeight - 120);
+
+            parent.fill(0);
+            parent.text(population.getNumPreys(), buttonX + 35, buttonY - buttonHeight - 55);
+            parent.text(population.getNumPredator(), buttonX + 95, buttonY - buttonHeight - 55);
+
+            if (parent.mousePressed && parent.mouseX > buttonX && parent.mouseX < buttonX + buttonWidth &&
+                    parent.mouseY > buttonY && parent.mouseY < buttonY + buttonHeight) {
+                setup(parent);
+            }
+
+            if (!paused) {
+                terrain.regenerate();
+                target = population.getTarget();
+                population.update(dt, terrain, target);
+            }
         }
-
-        if(!paused) {
-            timer += dt;
-            terrain.regenerate();
-            population.update(dt, terrain);
-            population.update(dt, terrain);
-        }
-
     }
+
 
     private String[] getTerrainArt(PApplet p) {
         String[] art = new String[WorldConstants.NSTATES];
@@ -92,6 +121,13 @@ public class EcosystemApp implements IProcessingApp {
         if(parent.key == ' ') {
             paused = !paused;
         }
+        if (parent.key == 'a' || parent.key == 'A'){
+            population.addPrey(parent, plt, terrain);
+        }
+        if (parent.key == 'p' || parent.key == 'P'){
+            population.addPredator(parent, plt);
+        }
+
     }
 
     @Override

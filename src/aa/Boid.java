@@ -21,6 +21,7 @@ public class Boid extends Body {
     protected float phiWander;
     private double[] window;
     private float sumWeights;
+    private boolean dead = false;
 
     // Construtor de um "Boid"
     protected Boid(PVector pos, float mass, float radius,
@@ -182,11 +183,22 @@ public class Boid extends Body {
     // Método "display" de um "Boid"
     @Override
     public void display(PApplet p, SubPlot plt) {
-        p.pushMatrix();
-        float[] pp = plt.getPixelCoord(pos.x, pos.y);
-        // p.translate(pp[0], pp[1]);
-        // p.rotate(-vel.heading());
-        p.shape(shape, pp[0] - 10f, pp[1] - 10f, 20f, 20f);
-        p.popMatrix();
+        if (!dead) {
+            p.pushMatrix();
+            float[] pp = plt.getPixelCoord(pos.x, pos.y);
+            // p.translate(pp[0], pp[1]);
+            // p.rotate(-vel.heading());
+            p.shape(shape, pp[0] - 10f, pp[1] - 10f, 20f, 20f);
+            p.popMatrix();
+        }
     }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public void setDead(boolean b) {
+        dead = b;
+    }
+
 }

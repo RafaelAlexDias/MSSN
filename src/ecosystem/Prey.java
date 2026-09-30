@@ -22,7 +22,6 @@ public class Prey extends Animal {
         energy = WorldConstants.INI_PREY_ENERGY;
     }
 
-    @Override
     public void eat(Terrain terrain) {
         Patch patch = (Patch)terrain.world2Cell(pos.x, pos.y);
         if (patch.getState() == WorldConstants.PatchType.FOOD.ordinal()) {

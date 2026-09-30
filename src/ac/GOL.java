@@ -1,6 +1,7 @@
 package ac;
 
 import processing.core.PApplet;
+import processing.core.PVector;
 
 import static java.lang.Math.random;
 import static processing.core.PApplet.constrain;
@@ -9,6 +10,8 @@ public class GOL {
 
     // Array de células
     int[] cells;
+    // Array de cores das células
+    int[][] colors;
     // Dimensão de cada célula
     int cellDimension = 20;
     // Tamanho da grid
@@ -19,12 +22,12 @@ public class GOL {
     public GOL(PApplet p) {
         size = p.width / cellDimension;
         cells = new int[size * size];
-        // Aleatóriamente atribui-se valor 1 (viva) ou 0 (morta) a cada célula
-        // Pode-se alterar o valor "chance" sendo que com um valor mais elevado,
-        // serão geradas menos células iniciais, e vice-versa
+        colors = new int[size * size][3];  // Array para armazenar RGB de cada célula
+        // Aleatoriamente atribui-se valor 1 (viva) ou 0 (morta) a cada célula
         for (int i = 0; i < cells.length; ++i) {
             if (random() < chance) {
                 cells[i] = 1;
+                colors[i] = new int[]{(int) (random() * 255), (int) (random() * 255), (int) (random() * 255)};  // Cor aleatória
             } else {
                 cells[i] = 0;
             }
@@ -33,29 +36,36 @@ public class GOL {
 
     public void regrasGOL() {
         int[] next = cells.clone();
+        int[][] nextColors = colors.clone();
+
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 int n = numN(i, j);
+
                 if (cells[pos(i, j)] == 1) {
                     // Se uma célula tiver menos que 2 ou mais que 3 vizinhos, morre
                     if (n < 2 || n > 3) {
-                        next[pos(i, j)] = 0;  // Dead
+                        next[pos(i, j)] = 0;  // Morta
                     }
                 } else {
                     // Se uma célula tiver exatamente 3 vizinhos, torna-se viva
                     if (n == 3) {
                         next[pos(i, j)] = 1;
+                        // A nova célula herda a cor predominante dos vizinhos vivos
+                        nextColors[pos(i, j)] = corPredominante(i, j);
                     }
                 }
             }
         }
         cells = next.clone();
+        colors = nextColors.clone();
     }
 
     public void clearScreen() {
         // Apaga a grid toda, ou seja, mata todas as células
         for (int i = 0; i < cells.length; i++) {
             cells[i] = 0;
+            colors[i] = new int[]{0, 0, 0};  // Sem cor
         }
     }
 
@@ -73,6 +83,41 @@ public class GOL {
         return num;
     }
 
+    public int[] corPredominante(int i, int j) {
+        // Conta as cores dos vizinhos vivos e retorna a cor predominante
+        int[][] vizinhos = new int[8][3];  // Máximo de 8 vizinhos
+        int contador = 0;
+
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                if (x == 0 && y == 0) continue;
+                int ni = i + x;
+                int nj = j + y;
+                if (cells[pos(ni, nj)] == 1) {
+                    vizinhos[contador++] = colors[pos(ni, nj)];
+                }
+            }
+        }
+
+        if (contador == 0) {
+            return new int[]{255, 255, 255};  // Cor padrão branca se não houver vizinhos
+        }
+
+        // Calcula a cor média entre os vizinhos
+        int[] corMedia = new int[3];
+        for (int k = 0; k < contador; k++) {
+            corMedia[0] += vizinhos[k][0];
+            corMedia[1] += vizinhos[k][1];
+            corMedia[2] += vizinhos[k][2];
+        }
+
+        corMedia[0] /= contador;
+        corMedia[1] /= contador;
+        corMedia[2] /= contador;
+
+        return corMedia;
+    }
+
     public int pos(int i, int j) {
         i = constrain(i, 0, size - 1);
         j = constrain(j, 0, size - 1);
@@ -86,10 +131,10 @@ public class GOL {
     public void display(PApplet p) {
         // Desenha as células
         p.noStroke();
-        p.fill(0);
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (cells[pos(i, j)] == 1) {
+                    p.fill(colors[pos(i, j)][0], colors[pos(i, j)][1], colors[pos(i, j)][2]);
                     p.rect(i * cellDimension, j * cellDimension, cellDimension, cellDimension);
                 }
             }

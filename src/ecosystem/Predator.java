@@ -1,8 +1,11 @@
 package ecosystem;
 
+import physics.Body;
 import processing.core.PApplet;
 import processing.core.PVector;
 import tools.SubPlot;
+
+import java.util.List;
 
 public class Predator extends Animal {
     private PApplet parent;
@@ -22,9 +25,16 @@ public class Predator extends Animal {
         energy = WorldConstants.INI_PREDATOR_ENERGY;
     }
 
-    @Override
-    public void eat(Terrain terrain) {
-
+    public void eat(Terrain terrain, Animal target){
+        if (target != null) {
+            if (!(target.isDead())) {
+                float dist = PVector.dist(pos, target.getPos());
+                if (dist < 3 * target.getRadius()) {
+                    energy += WorldConstants.ENERGY_FROM_PREY;
+                    target.setDead(true);
+                }
+            }
+        }
     }
 
     @Override

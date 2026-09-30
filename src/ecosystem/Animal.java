@@ -11,6 +11,7 @@ import tools.SubPlot;
 public abstract class Animal extends Boid implements IAnimal {
 
     protected float energy;
+    private Animal target;
 
     protected Animal(PVector pos, float mass, float radius, String shapeString, PApplet p, SubPlot plt) {
         super(pos, mass, radius, shapeString, p, plt);
@@ -40,5 +41,13 @@ public abstract class Animal extends Boid implements IAnimal {
         if (patch.getState() == WorldConstants.PatchType.OBSTACLE.ordinal()) {
             energy -= 50*dt;
         }
+    }
+
+    public void setTarget(Animal target) {
+        this.target = target;
+    }
+
+    public Animal getTarget(){
+        return target;
     }
 }
